@@ -131,6 +131,9 @@
     background-color: #fcc422;
 }
 
+.vertical-menu {
+    display: none;
+ }
 
 @media screen and (max-width: 720px) {
     .menu {
