@@ -1,5 +1,5 @@
 function menu(x) {
-    x.classList.toggle("change");
+    x.classList.toggle('change');
 }
 
 function show(){
@@ -11,3 +11,11 @@ function show(){
     }
 }
 
+function hide() {
+    if (window.innerWidth >= 860) {
+        document.getElementsByClassName('mobile-button')[0].classList.remove('change');
+        document.getElementsByClassName('vertical-menu')[0].style.display = 'none';
+    }
+}
+
+window.onresize = hide;

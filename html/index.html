@@ -10,6 +10,8 @@
 
     <title>XNoobs</title>
 </head>
+
+
 <body>
 <div id="menuBackground">
     <button class="home-button">
@@ -19,16 +21,27 @@
         xnoobs
     </button>
 
-    <div class="menu">
-        <button class="portfolio-button menu-button">
-            Портфолио
-        </button>
-        <button class="about-button menu-button">
-            О нас
-        </button>
-        <button class="contact-button menu-button">
-            Контакты
-        </button>
+    <div class="menu-and-language">
+        <div class="menu">
+            <button class="portfolio-button menu-button">
+                Портфолио
+            </button>
+            <button class="about-button menu-button">
+                О нас
+            </button>
+            <button class="contact-button menu-button">
+                Контакты
+            </button>
+        </div>
+
+        <div class="language-change">
+            <button >
+                rus
+            </button>
+            <button>
+                eng
+            </button>
+        </div>
     </div>
 
     <div class="mobile-button" onclick="menu(this); show();">
@@ -42,6 +55,10 @@
     <a href="#">Портфолио</a>
     <a href="#">О нас</a>
     <a href="#">Контакты</a>
+    <div class="language-vertical">
+        <a href="#">rus</a>
+        <a href="#">eng</a>
+    </div>
 </div>
 </body>
 </html>
