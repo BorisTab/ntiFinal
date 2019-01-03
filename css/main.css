@@ -1,0 +1,165 @@
+#menuBackground{
+    display: flex;
+    padding-left: 20px;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+    margin: 0;
+    background-color: #242424;
+    border-radius: 10px;
+}
+
+.home-button{
+    --width:210px;
+    --height:70px;
+    position:relative;
+    display:inline-block;
+    width: var(--width);
+    height: var(--height);
+    line-height:var(--height);
+    color:#fcc422;
+    padding: 0;
+    border: none;
+    text-align: center;
+    font-family:sans-serif;
+    font-size:24px;
+    letter-spacing:8px;
+    text-transform:uppercase;
+    text-decoration:none;
+    transition:2s;
+    background-color:transparent;
+    border-color:transparent;
+    cursor: pointer;
+}
+.home-button:hover,
+.home-button:focus{
+    outline:none;
+}
+.button-svg,
+.button-rect{
+    position:absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    fill:none;
+}
+.button-rect{
+    stroke:#fcc422;
+    stroke-width:5;
+    stroke-dasharray:var(--height) var(--width);
+    stroke-dashoffset:calc(
+            2 * var(--width) + 2.5* var(--height)
+    );
+    transition:2s;
+}
+.home-button:hover .button-rect,
+.home-button:focus .button-rect{
+    stroke-dashoffset:calc(1.5 * var(--height));
+}
+
+.menu {
+    display: flex;
+    align-content: center;
+    justify-content: flex-end;
+    text-align: center;
+}
+
+.menu-button {
+    padding: 10px;
+    position:relative;
+    display:inline-block;
+    color:#ffffff;
+    border: none;
+    text-align: center;
+    font-family:sans-serif;
+    font-size:18px;
+    letter-spacing:6px;
+    text-transform:uppercase;
+    text-decoration:none;
+    transition:2s;
+    background-color:transparent;
+    cursor: pointer;
+}
+
+.menu-button:after {
+    display: block;
+    content: "";
+    height: 4px;
+    border-radius: 2px;
+    width: 0%;
+    background-color: #fcc422;
+    transition: width .3s ease-in-out;
+}
+
+.menu-button:hover:after,
+.menu-button:focus:after {
+    width: 100%;
+}
+
+.menu-button:focus{
+    outline:none;
+}
+
+.mobile-button {
+    display: none;
+}
+
+@media screen and (max-width: 720px) {
+    .menu {
+        display: none;
+    }
+
+    .mobile-button {
+        display: inline-block;
+        cursor: pointer;
+        margin-right: 10px;
+    }
+}
+
+.bar1, .bar2, .bar3 {
+    width: 35px;
+    height: 5px;
+    border-radius: 2px;
+    background-color: #ffffff;
+    margin: 6px 0;
+    transition: 0.4s;
+}
+
+.change .bar1 {
+    -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+    transform: rotate(-45deg) translate(-9px, 6px);
+    background-color: #fcc422;
+}
+
+.change .bar2 {
+    opacity: 0;
+}
+
+.change .bar3 {
+    -webkit-transform: rotate(45deg) translate(-8px, -8px);
+    transform: rotate(45deg) translate(-8px, -8px);
+    background-color: #fcc422;
+
+}
+
+.vertical-menu {
+    float: right;
+    width: 200px; /* Set a width if you like */
+    margin: 5px;
+    display: none;
+    text-align: center;
+}
+
+.vertical-menu a {
+    background-color: #242424; /* Grey background color */
+    color: #ffffff; /* Black text color */
+    display: block; /* Make the links appear below each other */
+    padding: 12px; /* Add some padding */
+    text-decoration: none; /* Remove underline from links */
+}
+
+.vertical-menu a:hover {
+    background-color: #fcc422;
+    color: #242424;
+}
