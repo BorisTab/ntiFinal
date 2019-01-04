@@ -6,14 +6,17 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../css/main.css">
-    <script src="../js/main.js" type="text/javascript"></script>
 
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script src="../js/main.js"></script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
     <title>XNoobs</title>
 </head>
 
 
 <body>
-<div id="menuBackground">
+<header>
     <button class="home-button">
         <svg class="button-svg">
             <rect class="button-rect"></rect>
@@ -49,16 +52,28 @@
         <div class="bar2"></div>
         <div class="bar3"></div>
     </div>
-</div>
+</header>
 
 <div class="vertical-menu">
-    <a href="#">Портфолио</a>
-    <a href="#">О нас</a>
-    <a href="#">Контакты</a>
+    <a class="vertical-menu-button" href="#">Портфолио</a>
+    <a class="vertical-menu-button" href="#">О нас</a>
+    <a class="vertical-menu-button" href="#">Контакты</a>
     <div class="language-vertical">
-        <a href="#">rus</a>
-        <a href="#">eng</a>
+        <a class="vertical-menu-button" href="#">rus</a>
+        <a class="vertical-menu-button" href="#">eng</a>
     </div>
 </div>
+
+<section>
+    <img src="../images/logo.png" alt="" class="logo" onmouseover="logoRotate()"/>
+    <p class="slogan">Супер слоган</p>
+    <img src="../images/arrow-down.png" alt="" class="arrow-down" onclick="smoothScroll(document.getElementById('section-2'))"/>
+</section>
+<section id="section-2">
+    <h1 style="font-size: 50px">АЗУЗАЗ</h1>
+</section>
+<section>
+
+</section>
 </body>
 </html>

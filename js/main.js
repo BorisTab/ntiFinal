@@ -19,3 +19,15 @@ function hide() {
 }
 
 window.onresize = hide;
+
+$('document').ready(function () {
+    $('.logo').mouseover(function () {
+        $('.logo').addClass('logo-change');
+    });
+
+    $('.arrow-down').click(function() {
+        $('html,body').animate({
+                scrollTop: $("#section-2").offset().top
+        }, 800);
+    });
+});
