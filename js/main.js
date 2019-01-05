@@ -17,8 +17,28 @@ function hide() {
         document.getElementsByClassName('vertical-menu')[0].style.display = 'none';
     }
 }
-
 window.onresize = hide;
+
+function smallMenu() {
+    if( $('html').scrollTop() !== 0) {
+        $('header').animate({
+            height: '60px',
+        }, 200);
+        $('.home-button').css({
+            '--height': '40px',
+            '--width': '180px'
+        });
+    } else {
+        $('header').animate({
+            height: '100px',
+        }, 200);
+        $('.home-button').css({
+            '--height': '70px',
+            '--width': '210px'
+        });
+    }
+}
+setInterval(smallMenu, 210);
 
 $('document').ready(function () {
     $('.logo').mouseover(function () {
