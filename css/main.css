@@ -63,8 +63,7 @@ header {
     );
     transition:2s;
 }
-.home-button:hover .button-rect,
-.home-button:focus .button-rect{
+.home-button:hover .button-rect {
     stroke-dashoffset:calc(1.5 * var(--height));
 }
 
@@ -110,7 +109,7 @@ header {
 
 .menu-button:hover:after,
 .menu-button:focus:after {
-    width: 100%;
+    width: 95%;
 }
 
 .menu-button:focus{
