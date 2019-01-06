@@ -72,11 +72,17 @@ $('document').ready(function () {
         }, 800);
     });
 
-
+    let slideWidth = $('#section-4').innerWidth();
     let sliderTimer;
     let numberOfSlides = 3;
 
-    setInterval(function () {
+    $('.viewport').css({
+        'width': slideWidth
+    });
+    $('.slide').css({
+        'width': slideWidth
+    });
+    /*setInterval(function () {
         let slideWidth = $('#section-4').innerWidth();
         $('.viewport').css({
             'width': slideWidth
@@ -84,7 +90,7 @@ $('document').ready(function () {
         $('.slide').css({
             'width': slideWidth
         });
-    }, 1);
+    }, 1);*/
 
     $(function(){
         $('.slide-wrapper').width($('.slide-wrapper').children().length * slideWidth);
@@ -109,7 +115,7 @@ $('document').ready(function () {
         }
         $('.slide-wrapper').animate({left: -currentSlide*slideWidth},1500).data('current',currentSlide);
     }
-    
+
     function previousSlide() {
         let currentSlide=parseInt($('.slide-wrapper').data('current'));
         currentSlide--;

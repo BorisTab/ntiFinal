@@ -150,7 +150,7 @@ header {
     display: none;
     top: 100px;
     transition: .2s;
- }
+}
 
 .language-change button {
     padding: 3px;
@@ -326,6 +326,7 @@ section {
     padding: 0;
     background-image: url("../images/slide1.jpg");
     background-size: cover;
+    background-attachment: fixed;
 }
 
 .second{
