@@ -418,10 +418,16 @@ section {
     background-color: transparent;
     outline:none;
     transition:0.3s;
+    text-transform: capitalize;
+}
+
+#email {
+    text-transform: none;
 }
 
 .form-input:focus {
     border-bottom:1px solid #fcc422;
+    text-transform: capitalize;
 }
 
 .form-button{
@@ -460,9 +466,8 @@ textarea {
     flex-wrap: wrap;
 }
 
-.ring .write {
-    display: block;
-
+.ring, .write {
+    margin: 100px;
 }
 
 .contact h1 {

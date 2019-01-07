@@ -124,4 +124,20 @@ $('document').ready(function () {
         }
         $('.slide-wrapper').animate({left: -currentSlide*slideWidth},1500).data('current',currentSlide);
     }
+
+    $(".form").submit(function() {
+        let th = $(this);
+        $.ajax({
+            type: "POST",
+            url: "../back/send.php",
+            data: th.serialize()
+        }).done(function() {
+            alert("Спасибо!");
+            setTimeout(function() {
+                // Done Functions
+                th.trigger("reset");
+            }, 1000);
+        });
+        return false;
+    });
 });
