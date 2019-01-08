@@ -47,7 +47,6 @@ $('document').ready(function () {
         }, 800);
     });
 
-
     $('.home-button').click(function () {
         $('html, body').animate({
             scrollTop: $('#section-1').offset().top
@@ -57,19 +56,19 @@ $('document').ready(function () {
     $('.portfolio-button').click(function () {
         $('html, body').animate({
             scrollTop: $('#section-2').offset().top
-        }, 800);
+        }, 1000);
     });
 
     $('.about-button').click(function () {
         $('html, body').animate({
             scrollTop: $('#section-3').offset().top
-        }, 800);
+        }, 1000);
     });
 
     $('.contact-button').click(function () {
         $('html, body').animate({
             scrollTop: $('#section-5').offset().top
-        }, 800);
+        }, 1000);
     });
 
     let slideWidth = $('#section-4').innerWidth();
@@ -140,4 +139,19 @@ $('document').ready(function () {
         });
         return false;
     });
+
+    $('.rus').click(function () {
+        window.location = 'index.html';
+        $('.eng').toggleClass('selected-language unselected-language');
+        $(this).toggleClass('selected-language unselected-language');
+    });
+    $('.eng').click(function () {
+        window.location = 'index-eng.html';
+        $('.rus').toggleClass('selected-language unselected-language');
+        $(this).toggleClass('selected-language unselected-language');
+    });
+
+    $('html, body').scroll(function () {
+        $('.menu-button:after').css('width', '95%');
+    })
 });
