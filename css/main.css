@@ -38,7 +38,6 @@ header {
     text-decoration:none;
     transition: .2s;
     background-color:transparent;
-    border-color:transparent;
     cursor: pointer;
 }
 .home-button:hover,

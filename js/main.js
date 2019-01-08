@@ -142,13 +142,9 @@ $('document').ready(function () {
 
     $('.rus').click(function () {
         window.location = 'index.html';
-        $('.eng').toggleClass('selected-language unselected-language');
-        $(this).toggleClass('selected-language unselected-language');
     });
     $('.eng').click(function () {
         window.location = 'index-eng.html';
-        $('.rus').toggleClass('selected-language unselected-language');
-        $(this).toggleClass('selected-language unselected-language');
     });
 
     $('html, body').scroll(function () {
