@@ -19,24 +19,26 @@ function hide() {
 }
 //window.onresize = hide;
 
-function smallMenu() {
-    if( $('html').scrollTop() !== 0) {
-        $('header').animate({
-            height: '60px'
-        }, 200);
-        $('.home-button').css('transform', 'scale(0.75)');
-        $('.vertical-menu').css('top', '60px');
-    } else {
-        $('header').animate({
-            height: '100px',
-        }, 200);
-        $('.home-button').css('transform', 'scale(1)');
-        $('.vertical-menu').css('top', '100px');
-    }
-}
-setInterval(smallMenu, 210);
+
 
 $('document').ready(function () {
+    function smallMenu() {
+        if( $('html').scrollTop() !== 0) {
+            $('header').animate({
+                height: '60px'
+            }, 200);
+            $('.home-button').css('transform', 'scale(0.75)');
+            $('.vertical-menu').css('top', '60px');
+        } else {
+            $('header').animate({
+                height: '100px',
+            }, 200);
+            $('.home-button').css('transform', 'scale(1)');
+            $('.vertical-menu').css('top', '100px');
+        }
+    }
+    setInterval(smallMenu, 210);
+
     $('.logo').mouseover(function () {
         $('.logo').addClass('logo-change');
     });
