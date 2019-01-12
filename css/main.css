@@ -136,12 +136,17 @@ header {
     transition: width .3s ease-in-out;
 }
 
-.menu-button:hover:after {
-    width: 95%;
+ul {
+    list-style-type: none;
 }
 
-.menu-button:focus{
-    outline:none;
+.menu-button:hover:after, .active-button a:after {
+    display: block;
+    content: "";
+    height: 4px;
+    border-radius: 2px;
+    background-color: #fcc422;
+    width: 95%;
 }
 
 .mobile-button {
@@ -218,7 +223,7 @@ header {
 section {
     display: block;
     box-sizing: border-box;
-    height: 100vh;
+    height: calc(100vh + 1px);
     width: 100%;
     background-repeat: no-repeat;
     background-attachment: fixed;
