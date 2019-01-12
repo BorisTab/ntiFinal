@@ -1,3 +1,18 @@
+function preloader(){
+    $(() => {
+        let preload =$('.preloader');
+        setInterval(() => {
+            preload.css('opacity', 0);
+            setInterval(
+                () => preload.remove(),
+                parseInt(preload.css('--duration'))*1000
+            );
+
+        },1000);
+    });
+}
+preloader();
+
 function menu(x) {
     x.classList.toggle('change');
 }
@@ -12,16 +27,23 @@ function show(){
 }
 
 function hide() {
-    if (window.innerWidth >= 860) {
         document.getElementsByClassName('mobile-button')[0].classList.remove('change');
         document.getElementsByClassName('vertical-menu')[0].style.display = 'none';
-    }
 }
-//window.onresize = hide;
+setInterval(function () {
+   if(window.innerWidth >= 860) hide();
+}, 200);
 
+function portfolioChange() {
+    let portfolioHeight = $('.portfolio').height();
+    $('#section-2').css('height', portfolioHeight + 250);
+}
+window.onresize = portfolioChange;
 
 
 $('document').ready(function () {
+    portfolioChange();
+
     function smallMenu() {
         if( $('html').scrollTop() !== 0) {
             $('header').animate({
@@ -55,22 +77,25 @@ $('document').ready(function () {
         }, 800);
     });
 
-    $('.portfolio-button').click(function () {
+    $('.portfolio-button, .vertical-menu-portfolio').click(function () {
         $('html, body').animate({
             scrollTop: $('#section-2').offset().top
         }, 1000);
+        hide();
     });
 
-    $('.about-button').click(function () {
+    $('.about-button, .vertical-menu-about').click(function () {
         $('html, body').animate({
             scrollTop: $('#section-3').offset().top
         }, 1000);
+        hide();
     });
 
-    $('.contact-button').click(function () {
+    $('.contact-button, .vertical-menu-contact').click(function () {
         $('html, body').animate({
             scrollTop: $('#section-5').offset().top
         }, 1000);
+        hide();
     });
 
     let slideWidth = $('#section-4').innerWidth();
@@ -142,14 +167,10 @@ $('document').ready(function () {
         return false;
     });
 
-    $('.rus').click(function () {
+    $('.rus, .vertical-menu-rus').click(function () {
         window.location = 'index.html';
     });
-    $('.eng').click(function () {
+    $('.eng, .vertical-menu-eng').click(function () {
         window.location = 'index-eng.html';
     });
-
-    $('html, body').scroll(function () {
-        $('.menu-button:after').css('width', '95%');
-    })
 });
