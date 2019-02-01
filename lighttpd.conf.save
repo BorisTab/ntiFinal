@@ -1,7 +1,0 @@
-static-file.exclude-extensions += (".py", ".pyc")
-
-
-
-$HTTP["host"] =~ "xnoobs.ru" {
-	
-}
