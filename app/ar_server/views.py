@@ -1,13 +1,14 @@
+from flask import request
 from flask import Blueprint
 from flask import render_template
-from flask import request
 
 from app.ar_server.models import ModelGatherer
 
-blueprint = Blueprint('ar', 'ar', static_folder='../static')
+
+blueprint = Blueprint('ar', 'ar')
 
 
-@blueprint.route('/')
+@blueprint.route('/', methods=['GET'])
 def main():
     return render_template('ar.html')
 
