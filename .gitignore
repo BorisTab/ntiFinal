@@ -26,6 +26,7 @@
 *.sql
 *.sqlite
 *.db
+*.osm
 
 # Folders #
 ###########
