@@ -1,4 +1,4 @@
-function preloader(){
+/*function preloader(){
     $(() => {
         let preload =$('.preloader');
         setInterval(() => {
@@ -11,7 +11,7 @@ function preloader(){
         },1000);
     });
 }
-preloader();
+preloader();*/
 
 function menu(x) {
     x.classList.toggle('change');
@@ -45,7 +45,7 @@ $('document').ready(function () {
     portfolioChange();
 
     function smallMenu() {
-        if( $('html').scrollTop() !== 0) {
+        if( $(window).scrollTop() !== 0) {
             $('header').animate({
                 height: '60px'
             }, 200);
@@ -66,33 +66,33 @@ $('document').ready(function () {
     });
 
     $('.arrow-down').click(function() {
-        $('html, body').animate({
-            scrollTop: $("#section-2").offset().top
+        $('templates, body').animate({
+            scrollTop: $("#section-2").offset().top + 1
         }, 800);
     });
 
     $('.home-button').click(function () {
-        $('html, body').animate({
+        $('templates, body').animate({
             scrollTop: $('#section-1').offset().top
         }, 800);
     });
 
     /*$('.portfolio-button, .vertical-menu-portfolio').click(function () {
-        $('html, body').animate({
+        $('templates, body').animate({
             scrollTop: $('#section-2').offset().top
         }, 1000);
         hide();
     });
 
     $('.about-button, .vertical-menu-about').click(function () {
-        $('html, body').animate({
+        $('templates, body').animate({
             scrollTop: $('#section-3').offset().top
         }, 1000);
         hide();
     });
 
     $('.contact-button, .vertical-menu-contact').click(function () {
-        $('html, body').animate({
+        $('templates, body').animate({
             scrollTop: $('#section-5').offset().top
         }, 1000);
         hide();
@@ -155,12 +155,11 @@ $('document').ready(function () {
         let th = $(this);
         $.ajax({
             type: "POST",
-            url: "../back/send.php",
+            url: "",
             data: th.serialize()
         }).done(function() {
             alert("Спасибо!");
             setTimeout(function() {
-                // Done Functions
                 th.trigger("reset");
             }, 1000);
         });
@@ -168,43 +167,43 @@ $('document').ready(function () {
     });
 
     $('.rus, .vertical-menu-rus').click(function () {
-        window.location = 'index.html';
+        window.location = 'index.templates';
     });
     $('.eng, .vertical-menu-eng').click(function () {
-        window.location = 'index-eng.html';
+        window.location = 'index-eng.templates';
     });
 
 
 
-    var lastId,
+    let lastId,
         topMenu = $('.menu'),
         // All list items
         menuItems = topMenu.find('a'),
         // Anchors corresponding to menu items
         scrollItems = menuItems.map(function(){
-            var item = $($(this).attr("href"));
+            let item = $($(this).attr("href"));
             if (item.length) return item;
         });
     menuItems.click(function(e){
-        var href = $(this).attr("href"),
+        let href = $(this).attr("href"),
             offsetTop = href === "#" ? 0 : $(href).offset().top + 1;
-        $('html, body').stop().animate({
+        $('templates, body').stop().animate({
             scrollTop: offsetTop
         }, 800);
         e.preventDefault();
     });
     $(window).scroll(function(){
         // Get container scroll position
-        var fromTop = $(this).scrollTop();
+        let fromTop = $(this).scrollTop();
 
         // Get id of current scroll item
-        var cur = scrollItems.map(function(){
+        let cur = scrollItems.map(function(){
             if ($(this).offset().top < fromTop)
                 return this;
         });
         // Get the id of the current element
         cur = cur[cur.length-1];
-        var id = cur && cur.length ? cur[0].id : "";
+        let id = cur && cur.length ? cur[0].id : "";
 
         if (lastId !== id) {
             lastId = id;
