@@ -1,6 +1,6 @@
 #!/usr/bin/env python
+from autoapp import app
 from flup.server.fcgi import WSGIServer
-from landing import app
 from werkzeug.contrib.fixers import LighttpdCGIRootFix
 
 
@@ -15,6 +15,6 @@ class ScriptNameStripper(object):
 
 app = ScriptNameStripper(app)
 
+
 if __name__ == '__main__':
     WSGIServer(LighttpdCGIRootFix(app)).run()
-

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0">
+    <title>AR</title>
+
+    <link rel=stylesheet type=text/css href="../static/css/ar.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="../static/js/ar.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCaIGVam3ZbXbjokw5Q1Hmf2wx-0VJ3R_Q&callback=initMap"
+            async defer></script>
+</head>
+<body>
+<div id="map"></div>
+<div class="form">
+    <h1 class="choose-zone-title">Выберите зону и нажмите "Отправить"</h1>
+    <form class="coordinate-send" name="send-coordinate" method="post">
+        <input type="hidden" name="right-up-lat" id="right-up-lat" >
+        <input type="hidden" name="right-up-lng" id="right-up-lng">
+        <input type="hidden" name="left-bottom-lat" id="left-bottom-lat">
+        <input type="hidden" name="left-bottom-lng" id="left-bottom-lng">
+        <button id="form-button">Отправить</button>
+    </form>
+</div>
+</body>
+</html>

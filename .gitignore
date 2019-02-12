@@ -6,6 +6,7 @@
 *.exe
 *.o
 *.so
+*.pyc
 
 # Packages #
 ############
@@ -26,9 +27,17 @@
 *.sql
 *.sqlite
 *.db
+<<<<<<< HEAD
+=======
+*.osm
+>>>>>>> 20359b6948e6e93463bf17db59fb510c22e1e011
 
 # Folders #
 ###########
 venv/
 .idea/
+<<<<<<< HEAD
 __pycache__/
+=======
+__pycache__/
+>>>>>>> 20359b6948e6e93463bf17db59fb510c22e1e011

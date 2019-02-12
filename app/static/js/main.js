@@ -174,8 +174,6 @@ $('document').ready(function () {
         window.location = 'index-eng.html';
     });
 
-
-
     var lastId,
         topMenu = $('.menu'),
         // All list items
