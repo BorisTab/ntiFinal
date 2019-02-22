@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../static/css/main.css">
+
+    <script src="../static/js/jquery-3.3.1.min.js"></script>
+    <script src="../static/js/main.js"></script>
+
+    <link rel="shortcut icon" href="../static/images/favicon.ico" type="image/x-icon">
+    <title>XNoobs</title>
+</head>
+
+
+<body>
+<header>
+    <button class="home-button">
+        <svg class="button-svg">
+            <rect class="button-rect"></rect>
+        </svg>
+        xnoobs
+    </button>
+
+    <div class="menu-and-language">
+        <div class="menu">
+            <button class="portfolio-button menu-button">
+                Portfolio
+            </button>
+            <button class="about-button menu-button">
+                About
+            </button>
+            <button class="contact-button menu-button">
+                Contacts
+            </button>
+        </div>
+
+        <div class="language-change">
+            <button class="rus unselected-language">
+                rus
+            </button>
+            <button class="eng selected-language">
+                eng
+            </button>
+        </div>
+    </div>
+
+    <div class="mobile-button" onclick="menu(this); show();">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+    </div>
+</header>
+
+<div class="vertical-menu">
+    <button class="vertical-menu-portfolio">Portfolio</button>
+    <button class="vertical-menu-about">About</button>
+    <button class="vertical-menu-contact">Contact</button>
+    <div class="language-vertical">
+        <button class="vertical-menu-rus">rus</button>
+        <button class="vertical-menu-eng">eng</button>
+    </div>
+</div>
+
+<section id="section-1">
+    <img src="../static/images/logo.png" alt="" class="logo"/>
+    <p class="slogan">Super slogan</p>
+    <img src="../static/images/arrow-down.png" alt="" class="arrow-down"/>
+</section>
+<section id="section-2">
+    <div class="title">
+        <h1>Our progress</h1>
+        <div class="underline"></div>
+        <h2>Something else</h2>
+    </div>
+    <div class="portfolio">
+        <figure>
+            <figcaption>
+                <h2>Demo</h2>
+                <p>This is the text</p>
+            </figcaption>
+        </figure>
+        <figure>
+            <figcaption>
+                <h2>Demo</h2>
+                <p>This is the text</p>
+            </figcaption>
+        </figure>
+        <figure>
+            <figcaption>
+                <h2>Demo</h2>
+                <p>This is the text</p>
+            </figcaption>
+        </figure>
+        <figure>
+            <figcaption>
+                <h2>Demo</h2>
+                <p>This is the text</p>
+            </figcaption>
+        </figure>
+        <figure>
+            <figcaption>
+                <h2>Demo</h2>
+                <p>This is the text</p>
+            </figcaption>
+        </figure>
+        <figure>
+            <figcaption>
+                <h2>Demo</h2>
+                <p>This is the text</p>
+            </figcaption>
+        </figure>
+    </div>
+</section>
+<section id="section-3">
+    <div class="title title-2">
+        <h1>Who we are?</h1>
+        <div></div>
+        <h2>Something else</h2>
+    </div>
+</section>
+<section id="section-4">
+    <div class="viewport">
+        <ul class="slide-wrapper" data-current="0">
+            <li class="slide"></li>
+            <li class="slide second"></li>
+            <li class="slide third"></li>
+        </ul>
+    </div>
+    <div class="slide-back">
+        <img class="arrows" src="../static/images/arrow_left.png" alt=""/>
+    </div>
+    <div class="slide-forward">
+        <img class="arrows" src="../static/images/arrow-right.png" alt=""/>
+    </div>
+</section>
+<section id="section-5">
+    <div class="title">
+        <h1>Would to contact us?</h1>
+        <div></div>
+        <h2>Write to us</h2>
+    </div>
+
+    <div class="forms">
+        <form class="form" method="post">
+            <input type="hidden" name="project_name" value="Xnoobs">
+            <input type="hidden" name="admin_email" value="boristab23@gmail.com">
+            <input type="hidden" name="form_subject" value="Feedback form">
+
+            <div class="form-group">
+                <input type="text" placeholder=" " class="form-input" name="name" id="name" required>
+                <label for="name" class="form-label">Name</label>
+            </div>
+            <div class="form-group">
+                <input name="email" type="email" placeholder=" " class="form-input" id="email" required>
+                <label for="email" class="form-label">E-Mail</label>
+            </div>
+            <div class="form-group">
+                <textarea name="body" class="form-input" placeholder=" " id="message"></textarea>
+                <label for="message" class="form-label">Message</label>
+            </div>
+            <button class="form-button">Send</button>
+        </form>
+    </div>
+</section>
+<section id="section-6">
+    <div class="contact">
+        <div class="ring">
+            <h1>Call</h1>
+            <h2>8(800)555-35-35</h2>
+        </div>
+        <div class="write">
+            <h1>Write</h1>
+            <h2>xamlo@xnoobs.ru</h2>
+        </div>
+    </div>
+    <footer>
+        Copyright © 2019 XNoobs. All rights reserved.
+    </footer>
+</section>
+</body>
+</html>
