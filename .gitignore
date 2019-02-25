@@ -34,5 +34,3 @@
 venv/
 .idea/
 __pycache__/
-ssl/
-

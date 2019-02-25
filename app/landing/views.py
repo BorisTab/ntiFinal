@@ -6,5 +6,5 @@ blueprint = Blueprint('landing', 'landing')
 
 
 @blueprint.route('/', methods=['GET'])
-def main():
+def index():
     return render_template('index.html')
