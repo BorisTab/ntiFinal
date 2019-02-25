@@ -2,7 +2,8 @@ from flask import Blueprint
 from flask import render_template
 from flask import request
 
-from .models import ModelGatherer
+from app.ar_server.models.model_gatherer import ModelGatherer
+from app.ar_server.models.asset_loader import AssetLoader
 
 blueprint = Blueprint('ar', 'ar', static_folder='../static')
 
@@ -21,4 +22,7 @@ def get_model():
 
     gatherer = ModelGatherer()
     gatherer.get_model(max_lat, max_lon, min_lat, min_lon)
+
+    loader = AssetLoader()
+    loader.send_object()
     return '200'
