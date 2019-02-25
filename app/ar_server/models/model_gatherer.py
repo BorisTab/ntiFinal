@@ -12,7 +12,7 @@ class ModelGatherer:
 
         r = requests.get(url)
         with open('map.osm', 'w') as f:
-            f.write(r.text)
+            f.write(str(r.text.encode("utf-8")))
 
         if 'too many' in r.text:
             print('Too many nodes')
@@ -21,7 +21,7 @@ class ModelGatherer:
             print('No nodes selected')
             return '400'
         else:
-            os.chdir('model_gatherer')
+            os.chdir(r'C:\Users\Skufler\Documents\xnoobs\app\ar_server\models')
             os.system(
-                'java -Djava.library.path="lib/jogl/linux-i586" -Xmx2G -jar OSM2World.jar -i ../map.osm -o ../map.obj --config config')
+                'java -Djava.library.path="lib/jogl/linux-i586" -Xmx2G -jar OSM2World.jar -i map.osm -o map.obj --config config')
             os.chdir('..')

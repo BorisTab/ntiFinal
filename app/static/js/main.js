@@ -1,18 +1,3 @@
-/*function preloader(){
-    $(() => {
-        let preload =$('.preloader');
-        setInterval(() => {
-            preload.css('opacity', 0);
-            setInterval(
-                () => preload.remove(),
-                parseInt(preload.css('--duration'))*1000
-            );
-
-        },1000);
-    });
-}
-preloader();*/
-
 function menu(x) {
     x.classList.toggle('change');
 }
@@ -72,84 +57,10 @@ $('document').ready(function () {
     });
 
     $('.home-button').click(function () {
-        $('html, body').animate({
+        $('templates, body').animate({
             scrollTop: $('#section-1').offset().top
         }, 800);
     });
-
-    /*$('.portfolio-button, .vertical-menu-portfolio').click(function () {
-        $('html, body').animate({
-            scrollTop: $('#section-2').offset().top
-        }, 1000);
-        hide();
-    });
-
-    $('.about-button, .vertical-menu-about').click(function () {
-        $('html, body').animate({
-            scrollTop: $('#section-3').offset().top
-        }, 1000);
-        hide();
-    });
-
-    $('.contact-button, .vertical-menu-contact').click(function () {
-        $('html, body').animate({
-            scrollTop: $('#section-5').offset().top
-        }, 1000);
-        hide();
-    });*/
-
-    // let slideWidth = $('#section-4').innerWidth();
-    // let sliderTimer;
-    // let numberOfSlides = 3;
-    //
-    // $('.viewport').css({
-    //     'width': slideWidth
-    // });
-    // $('.slide').css({
-    //     'width': slideWidth
-    // });
-    // /*setInterval(function () {
-    //     let slideWidth = $('#section-4').innerWidth();
-    //     $('.viewport').css({
-    //         'width': slideWidth
-    //     });
-    //     $('.slide').css({
-    //         'width': slideWidth
-    //     });
-    // }, 1);*/
-    //
-    // $(function(){
-    //     $('.slide-wrapper').width($('.slide-wrapper').children().length * slideWidth);
-    //     sliderTimer=setInterval(nextSlide,5000);
-    //     $('.slide-forward').click(function () {
-    //         clearInterval(sliderTimer);
-    //         nextSlide();
-    //         sliderTimer = setInterval(nextSlide, 5000);
-    //     });
-    //     $('.slide-back').click(function () {
-    //         clearInterval(sliderTimer);
-    //         previousSlide();
-    //         sliderTimer = setInterval(nextSlide, 5000);
-    //     });
-    // });
-    //
-    // function nextSlide(){
-    //     let currentSlide=parseInt($('.slide-wrapper').data('current'));
-    //     currentSlide++;
-    //     if(currentSlide >= numberOfSlides) {
-    //         currentSlide = 0;
-    //     }
-    //     $('.slide-wrapper').animate({left: -currentSlide*slideWidth},1500).data('current',currentSlide);
-    // }
-    //
-    // function previousSlide() {
-    //     let currentSlide=parseInt($('.slide-wrapper').data('current'));
-    //     currentSlide--;
-    //     if(currentSlide < 0) {
-    //         currentSlide = numberOfSlides - 1;
-    //     }
-    //     $('.slide-wrapper').animate({left: -currentSlide*slideWidth},1500).data('current',currentSlide);
-    // }
 
     $(".form").submit(function() {
         let th = $(this);
@@ -167,16 +78,15 @@ $('document').ready(function () {
     });
 
     $('.rus, .vertical-menu-rus').click(function () {
-        window.location = 'index.html';
+        window.location = 'index.templates';
     });
     $('.eng, .vertical-menu-eng').click(function () {
-        window.location = 'index-eng.html';
+        window.location = 'index-eng.templates';
     });
 
     $('#section-2 .column').mouseover(function () {
         $(this).addClass('active-column').siblings().removeClass('active-column');
     });
-
 
 
     let lastId,
@@ -191,7 +101,7 @@ $('document').ready(function () {
     menuItems.click(function(e){
         let href = $(this).attr("href"),
             offsetTop = href === "#" ? 0 : $(href).offset().top + 1;
-        $('html, body').stop().animate({
+        $('templates, body').stop().animate({
             scrollTop: offsetTop
         }, 800);
         e.preventDefault();
