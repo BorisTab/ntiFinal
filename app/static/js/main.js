@@ -1,4 +1,4 @@
-function preloader(){
+/*function preloader(){
     $(() => {
         let preload =$('.preloader');
         setInterval(() => {
@@ -11,7 +11,7 @@ function preloader(){
         },1000);
     });
 }
-preloader();
+preloader();*/
 
 function menu(x) {
     x.classList.toggle('change');
@@ -27,11 +27,11 @@ function show(){
 }
 
 function hide() {
-        document.getElementsByClassName('mobile-button')[0].classList.remove('change');
-        document.getElementsByClassName('vertical-menu')[0].style.display = 'none';
+    document.getElementsByClassName('mobile-button')[0].classList.remove('change');
+    document.getElementsByClassName('vertical-menu')[0].style.display = 'none';
 }
 setInterval(function () {
-   if(window.innerWidth >= 860) hide();
+    if(window.innerWidth >= 860) hide();
 }, 200);
 
 function portfolioChange() {
@@ -45,7 +45,7 @@ $('document').ready(function () {
     portfolioChange();
 
     function smallMenu() {
-        if( $('html').scrollTop() !== 0) {
+        if( $(window).scrollTop() !== 0) {
             $('header').animate({
                 height: '60px'
             }, 200);
@@ -67,7 +67,7 @@ $('document').ready(function () {
 
     $('.arrow-down').click(function() {
         $('html, body').animate({
-            scrollTop: $("#section-2").offset().top
+            scrollTop: $("#section-2").offset().top + 1
         }, 800);
     });
 
@@ -98,69 +98,68 @@ $('document').ready(function () {
         hide();
     });*/
 
-    let slideWidth = $('#section-4').innerWidth();
-    let sliderTimer;
-    let numberOfSlides = 3;
-
-    $('.viewport').css({
-        'width': slideWidth
-    });
-    $('.slide').css({
-        'width': slideWidth
-    });
-    /*setInterval(function () {
-        let slideWidth = $('#section-4').innerWidth();
-        $('.viewport').css({
-            'width': slideWidth
-        });
-        $('.slide').css({
-            'width': slideWidth
-        });
-    }, 1);*/
-
-    $(function(){
-        $('.slide-wrapper').width($('.slide-wrapper').children().length * slideWidth);
-        sliderTimer=setInterval(nextSlide,5000);
-        $('.slide-forward').click(function () {
-            clearInterval(sliderTimer);
-            nextSlide();
-            sliderTimer = setInterval(nextSlide, 5000);
-        });
-        $('.slide-back').click(function () {
-            clearInterval(sliderTimer);
-            previousSlide();
-            sliderTimer = setInterval(nextSlide, 5000);
-        });
-    });
-
-    function nextSlide(){
-        let currentSlide=parseInt($('.slide-wrapper').data('current'));
-        currentSlide++;
-        if(currentSlide >= numberOfSlides) {
-            currentSlide = 0;
-        }
-        $('.slide-wrapper').animate({left: -currentSlide*slideWidth},1500).data('current',currentSlide);
-    }
-
-    function previousSlide() {
-        let currentSlide=parseInt($('.slide-wrapper').data('current'));
-        currentSlide--;
-        if(currentSlide < 0) {
-            currentSlide = numberOfSlides - 1;
-        }
-        $('.slide-wrapper').animate({left: -currentSlide*slideWidth},1500).data('current',currentSlide);
-    }
+    // let slideWidth = $('#section-4').innerWidth();
+    // let sliderTimer;
+    // let numberOfSlides = 3;
+    //
+    // $('.viewport').css({
+    //     'width': slideWidth
+    // });
+    // $('.slide').css({
+    //     'width': slideWidth
+    // });
+    // /*setInterval(function () {
+    //     let slideWidth = $('#section-4').innerWidth();
+    //     $('.viewport').css({
+    //         'width': slideWidth
+    //     });
+    //     $('.slide').css({
+    //         'width': slideWidth
+    //     });
+    // }, 1);*/
+    //
+    // $(function(){
+    //     $('.slide-wrapper').width($('.slide-wrapper').children().length * slideWidth);
+    //     sliderTimer=setInterval(nextSlide,5000);
+    //     $('.slide-forward').click(function () {
+    //         clearInterval(sliderTimer);
+    //         nextSlide();
+    //         sliderTimer = setInterval(nextSlide, 5000);
+    //     });
+    //     $('.slide-back').click(function () {
+    //         clearInterval(sliderTimer);
+    //         previousSlide();
+    //         sliderTimer = setInterval(nextSlide, 5000);
+    //     });
+    // });
+    //
+    // function nextSlide(){
+    //     let currentSlide=parseInt($('.slide-wrapper').data('current'));
+    //     currentSlide++;
+    //     if(currentSlide >= numberOfSlides) {
+    //         currentSlide = 0;
+    //     }
+    //     $('.slide-wrapper').animate({left: -currentSlide*slideWidth},1500).data('current',currentSlide);
+    // }
+    //
+    // function previousSlide() {
+    //     let currentSlide=parseInt($('.slide-wrapper').data('current'));
+    //     currentSlide--;
+    //     if(currentSlide < 0) {
+    //         currentSlide = numberOfSlides - 1;
+    //     }
+    //     $('.slide-wrapper').animate({left: -currentSlide*slideWidth},1500).data('current',currentSlide);
+    // }
 
     $(".form").submit(function() {
         let th = $(this);
         $.ajax({
             type: "POST",
-            url: "../back/send.php",
+            url: "",
             data: th.serialize()
         }).done(function() {
             alert("Спасибо!");
             setTimeout(function() {
-                // Done Functions
                 th.trigger("reset");
             }, 1000);
         });
@@ -174,17 +173,23 @@ $('document').ready(function () {
         window.location = 'index-eng.html';
     });
 
-    var lastId,
+    $('#section-2 .column').mouseover(function () {
+        $(this).addClass('active-column').siblings().removeClass('active-column');
+    });
+
+
+
+    let lastId,
         topMenu = $('.menu'),
         // All list items
         menuItems = topMenu.find('a'),
         // Anchors corresponding to menu items
         scrollItems = menuItems.map(function(){
-            var item = $($(this).attr("href"));
+            let item = $($(this).attr("href"));
             if (item.length) return item;
         });
     menuItems.click(function(e){
-        var href = $(this).attr("href"),
+        let href = $(this).attr("href"),
             offsetTop = href === "#" ? 0 : $(href).offset().top + 1;
         $('html, body').stop().animate({
             scrollTop: offsetTop
@@ -193,16 +198,16 @@ $('document').ready(function () {
     });
     $(window).scroll(function(){
         // Get container scroll position
-        var fromTop = $(this).scrollTop();
+        let fromTop = $(this).scrollTop();
 
         // Get id of current scroll item
-        var cur = scrollItems.map(function(){
+        let cur = scrollItems.map(function(){
             if ($(this).offset().top < fromTop)
                 return this;
         });
         // Get the id of the current element
         cur = cur[cur.length-1];
-        var id = cur && cur.length ? cur[0].id : "";
+        let id = cur && cur.length ? cur[0].id : "";
 
         if (lastId !== id) {
             lastId = id;
