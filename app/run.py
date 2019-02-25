@@ -2,9 +2,10 @@ from flask import Flask
 
 from settings import DevConfig
 
-from app.landing import views as landing_views
+
 from app.ar_server import views as ar_views
 from app.science_art import views as sciart_views
+from app.landing import views as landing_views
 
 
 def create_app(config_object=DevConfig):

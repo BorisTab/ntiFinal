@@ -6,6 +6,7 @@
 *.exe
 *.o
 *.so
+*.pyc
 
 # Packages #
 ############
@@ -34,3 +35,4 @@ venv/
 .idea/
 __pycache__/
 ssl/
+

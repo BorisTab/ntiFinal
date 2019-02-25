@@ -1,6 +1,6 @@
 from flask.helpers import get_debug_flag
 
-from app.app import create_app
+from app import run
 
 from settings import DevConfig
 from settings import ProductionConfig
@@ -8,4 +8,4 @@ from settings import ProductionConfig
 
 CONFIG = DevConfig if get_debug_flag() else ProductionConfig
 
-site = create_app(CONFIG)
+app = run.create_app(CONFIG)

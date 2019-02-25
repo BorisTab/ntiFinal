@@ -1,4 +1,6 @@
-from app import app
+#!/usr/bin/env python
+
+from autoapp import app
 from flup.server.fcgi import WSGIServer
 from werkzeug.contrib.fixers import LighttpdCGIRootFix
 
