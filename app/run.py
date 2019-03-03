@@ -2,10 +2,12 @@ from flask import Flask
 
 from settings import DevConfig
 
+from app.extensions import db
+from app.extensions import login_manager
 
 from app.ar_server import views as ar_views
-from app.science_art import views as sciart_views
 from app.landing import views as landing_views
+from app.science_art import views as sciart_views
 
 
 def create_app(config_object=DevConfig):
@@ -19,7 +21,8 @@ def create_app(config_object=DevConfig):
 
 
 def register_extensions(app):
-    pass
+    db.init_app(app)
+    login_manager.init_app(app)
 
 
 def register_blueprints(app):

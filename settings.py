@@ -9,7 +9,8 @@ class Config(object):
     APP_DIR = os.path.abspath(os.path.dirname(__file__))
     PROJECT_ROOT = os.path.abspath(os.path.join(APP_DIR, os.pardir))
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///../data/articles.db'
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///./data/users.db'
+    TESTING = False
 
 
 class ProductionConfig(Config):
@@ -17,7 +18,7 @@ class ProductionConfig(Config):
     Production configuration
     """
     ENV = 'production'
-    DB_NAME = 'articles'
+    DB_NAME = 'users'
     DEBUG = False
 
 

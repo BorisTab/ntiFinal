@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="../static/css/login_form.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="../static/js/login_form.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="forms">
+        <form action="{{ url_for('ar.register') }}" name="form_register" class="form register" method="post">
+            <h1 class="form-title">Регистрация</h1>
+            <h4></h4>
+            <div class="form-group">
+                <input type="text" name="email" placeholder=" " id="register-login" class="form-input">
+                <label class="form-label">Email</label>
+            </div>
+            <div class="form-group">
+                <input type="password" name="password" placeholder=" " id="register-password" class="form-input">
+                <label class="form-label">Пароль</label>
+            </div>
+            <div class="form-group">
+                <input type="password" name="confirm" placeholder=" " id="register-password-confirm" class="form-input">
+                <label class="form-label">Повторите пароль</label>
+            </div>
+            <div class="buttons">
+                <button class="switch-button secondary register" onclick="location.replace('{{ url_for('ar.login') }}');">Войти</button>
+                {{ form.button(class_='login-button register-button') }}
+            </div>
+        </form>
+    </div>
+</body>
+</html>
