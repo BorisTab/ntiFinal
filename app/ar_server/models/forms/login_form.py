@@ -7,9 +7,11 @@ from wtforms import SubmitField
 
 class LoginForm(Form):
     email = StringField('Email Address', [
-        validators.DataRequired()
+        validators.DataRequired(),
+        validators.Length(min=4, max=25)
     ])
     password = PasswordField('Password', [
-        validators.DataRequired()
+        validators.DataRequired(),
+        validators.Length(min=6, max=30)
     ])
     button = SubmitField('Войти')

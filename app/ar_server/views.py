@@ -19,7 +19,6 @@ from app.ar_server.models.db_models import Users
 from app.ar_server.models.forms.login_form import LoginForm
 from app.ar_server.models.forms.registration_form import RegistrationForm
 
-from app.ar_server.models.asset_loader import AssetLoader
 from app.ar_server.models.model_gatherer import ModelGatherer
 
 
@@ -45,13 +44,13 @@ def login():
             user = db.session.query(Users).filter_by(email=_login, password=password).first()
 
             try:
-                if user.password == password:  # match_password(user.password, password):
+                if user.password == password:
                     login_user(user)
                     _next = request.args.get('next')
 
                     return redirect(_next or url_for('ar.main'))
             except Exception as e:
-                print(e.with_traceback(''))
+                print(e.with_traceback(e.__traceback__))
                 return abort(401)
 
     return render_template('login.html', form=login_form)
@@ -80,6 +79,7 @@ def register():
 
                 return redirect(_next or url_for('ar.main'))
             except Exception as e:
+                print(e.with_traceback(e.__traceback__))
                 # ToDo: user exists
                 return abort(401)
     return render_template('register.html', form=register_form)
@@ -98,8 +98,6 @@ def main():
 
 @blueprint.route('/get_model', methods=['POST'])
 def get_model():
-    test_device_ip = '192.168.1.93'
-
     max_lat = round(float(request.form['right-up-lat']), 2)
     max_lon = round(float(request.form['right-up-lng']), 2)
     min_lat = round(float(request.form['left-bottom-lat']), 2)
@@ -108,13 +106,18 @@ def get_model():
     gatherer = ModelGatherer()
     gatherer.get_model(max_lat, max_lon, min_lat, min_lon)
 
-    loader = AssetLoader()
-    loader.send_object(test_device_ip)
     return '200'
 
 
-def match_password(form_password, user_password):
-    return True if hashlib.sha256(form_password + salt).hexidigest() == user_password else False
+@blueprint.route('/put', methods=['GET'])
+def put_file():
+    pass
+
+
+########################
+#        DANGER        #
+#    DEBUG USE ONLY    #
+########################
 
 
 @blueprint.route('/create')

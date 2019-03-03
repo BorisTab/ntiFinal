@@ -15,25 +15,3 @@ $(function() {
         }
     });
 });
-
-/*
-$(function() {
-  $('button.switch-button.secondary.login').bind('click', function() {
-       $.getJSON('/ar/register',
-           function(data) {
-               window.location.replace = '/ar/register'
-       });
-       return true;
-    });
-});
-
-$(function() {
-
-    $('button.switch-button.secondary.register').bind('click', function() {
-        $.getJSON('/ar/login',
-            function(data) {
-                window.location.replace = '/ar/login'
-        });
-        return true;
-    });
- });*/

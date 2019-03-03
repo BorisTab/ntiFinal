@@ -78,10 +78,10 @@ $('document').ready(function () {
     });
 
     $('.rus, .vertical-menu-rus').click(function () {
-        window.location = 'index.templates';
+        window.location = '/';
     });
     $('.eng, .vertical-menu-eng').click(function () {
-        window.location = 'index-eng.templates';
+        window.location = '/en';
     });
 
     $('#section-2 .column').mouseover(function () {
