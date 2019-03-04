@@ -5,23 +5,47 @@
     <meta name="viewport" content="initial-scale=1.0">
     <title>AR</title>
 
-    <link rel=stylesheet type=text/css href="../static/css/ar.css">
+    <link rel="stylesheet" href="../static/css/ar.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://lib.arvancloud.com/ar/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
     <script src="../static/js/ar.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCaIGVam3ZbXbjokw5Q1Hmf2wx-0VJ3R_Q&callback=initMap"
             async defer></script>
 </head>
 <body>
 <div id="map"></div>
+
+<div class="menu-button-open">
+    <div class="bar1"></div>
+    <div class="bar2"></div>
+    <div class="bar3"></div>
+</div>
+
 <div class="form">
-    <h1 class="choose-zone-title">Выберите зону и нажмите "Отправить"</h1>
+    <div class="menu-button-close">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+    </div>
+    <div class="exit-button"><p>Выход</p></div>
+
+    <h1 class="choose-zone-title">Выберите зону <br> или введите координаты</h1>
     <form class="coordinate-send" name="send-coordinate" method="post">
         <input type="hidden" name="right-up-lat" id="right-up-lat" >
         <input type="hidden" name="right-up-lng" id="right-up-lng">
         <input type="hidden" name="left-bottom-lat" id="left-bottom-lat">
         <input type="hidden" name="left-bottom-lng" id="left-bottom-lng">
+        <input type="hidden" name="selected-object" id="selected-object">
+        <p>Координаты правого верхнего угла</p>
+        <input type="text" name="right-up" id="right-up" placeholder="широта;долгота">
+        <p>Координаты левого нижнего угла</p>
+        <input type="text" name="left-bottom" id="left-bottom" placeholder="широта;долгота">
         <button id="form-button">Отправить</button>
     </form>
+    <br>
+    <p>Модели</p>
+    <div class="history-block">
+    </div>
 </div>
 </body>
 </html>

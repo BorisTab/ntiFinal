@@ -57,7 +57,7 @@ $('document').ready(function () {
     });
 
     $('.home-button').click(function () {
-        $('templates, body').animate({
+        $('html, body').animate({
             scrollTop: $('#section-1').offset().top
         }, 800);
     });
@@ -101,7 +101,7 @@ $('document').ready(function () {
     menuItems.click(function(e){
         let href = $(this).attr("href"),
             offsetTop = href === "#" ? 0 : $(href).offset().top + 1;
-        $('templates, body').stop().animate({
+        $('html, body').stop().animate({
             scrollTop: offsetTop
         }, 800);
         e.preventDefault();
