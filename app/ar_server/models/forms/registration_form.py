@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 from wtforms import Form
 from wtforms import validators
+from wtforms import SubmitField
 from wtforms import StringField
 from wtforms import PasswordField
-from wtforms import SubmitField
 
 
 class RegistrationForm(Form):

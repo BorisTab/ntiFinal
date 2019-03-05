@@ -11,7 +11,8 @@ let maxWidth = 0.5;
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: 55.73, lng: 37.66},
-        zoom: 13
+        zoom: 13,
+        disableDefaultUI: true
     });
 
     let bounds = {
@@ -95,25 +96,77 @@ function preloader(){
     });
 }
 
+//Из БД вытаскиваем id эллемента, его фото и название, создаем для него блок
+
+class ObjectsCell {
+    constructor(cellId, img, name){
+        this.cellId = cellId;
+        this.img = img;
+        this.name = name;
+        this.htmlId = 'history-cell-' + this.cellId;
+    }
+
+    addObjectCell() {
+        $('.history-block').append('<div class="history-cell" id="' + this.htmlId + '" data-cell-id="' + this.cellId +'">\n' +
+            '            <img id="cell-photo" src="' + this.img + '" alt="">\n' +
+            '            <p id="name-of-cell">' + this.name + '</p>\n' +
+            '        </div>');
+    }
+}
+
 $('document').ready(function () {
+
+    $('.exit-button').click(function () {
+        window.location= '/ar/login';
+    });
+
+    $.mask.definitions['~']='[+-]';
+    $('#right_up, #left_bottom').mask('~999.99; ~999.99');
+
     $(".coordinate-send").submit(function() {
-        $('#right-up-lat').val(rightUpLat);
-        $('#right-up-lng').val(rightUpLng);
-        $('#left-bottom-lat').val(leftDownLat);
-        $('#left-bottom-lng').val(leftDownLng);
+        $('#right_up_lat').val(rightUpLat);
+        $('#right_up_lng').val(rightUpLng);
+        $('#left_bottom_lat').val(leftDownLat);
+        $('#left_bottom_lng').val(leftDownLng);
 
         let th = $(this);
         $.ajax({
             type: "POST",
-            url: "/ar/get_model",              //напишешь сюда обработчик
-            data: th.serialize()
-        }).done(function() {
-            $('.choose-zone-title').text('Вы может отправить новую зону');
-            alert('Зона отправлена');
-            setTimeout(function() {
-                th.trigger("reset");
-            }, 100);
+            url: "",              //напишешь сюда обработчик
+            data: th.serialize(),
+            success: function() {
+                $('.choose-zone-title').text('Вы может отправить новую зону');
+                alert('Зона отправлена');
+                setTimeout(function() {
+                    th.trigger("reset");
+                }, 100);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(xhr.status);
+                alert(thrownError);
+            }
         });
         return false;
+    });
+
+
+    ////////     UI     //////////
+
+    $('.menu-button-close').click(function () {
+        $('.form').css('left', '-320px');
+        setTimeout(function () {
+            $('.menu-button-open').css('display', 'inline-block');
+        }, 1500);
+    });
+    $('.menu-button-open').click(function () {
+        $('.form').css('left', '0');
+        $(this).css('display', 'none');
+    });
+
+    $('.history-cell').click(function () {
+        $(this).css('background-color', '#808080')
+            .siblings().css('background-color', '#fff');
+
+        $('#selected-object').val($(this).data('cell-id'));                        //отсылаю Id выбранной модели
     });
 });
