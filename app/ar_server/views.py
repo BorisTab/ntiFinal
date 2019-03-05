@@ -8,12 +8,16 @@ import traceback
 from time import strftime
 from logging.handlers import RotatingFileHandler
 
+from os import getcwd
+
 from flask import abort
 from flask import url_for
 from flask import request
 from flask import redirect
 from flask import Blueprint
 from flask import render_template
+
+from pathlib import Path
 
 from app.constants import salt
 
@@ -24,10 +28,14 @@ from app.extensions import login_manager
 from app.extensions import login_required
 
 from app.ar_server.models.db_models import Users
-from app.ar_server.models.forms.login_form import LoginForm
-from app.ar_server.models.forms.registration_form import RegistrationForm
+from app.ar_server.models.db_models import MapFile
 
+from app.ar_server.models.file_waiter import FileWaiter
 from app.ar_server.models.model_gatherer import ModelGatherer
+
+from app.ar_server.models.forms.login_form import LoginForm
+from app.ar_server.models.forms.map_creation_form import MapCreationForm
+from app.ar_server.models.forms.registration_form import RegistrationForm
 
 
 reload(sys)
@@ -109,7 +117,40 @@ def load_user(_login):
 @blueprint.route('/', methods=['GET', 'POST'])
 @login_required
 def main():
-    return render_template('ar.html')
+    form = MapCreationForm(request.form)
+
+    if request.method == 'POST':
+
+        if form.validate():
+            name = form.data['map_name']
+
+            # ToDo: simplify? -> Create additional class
+            obj_file = generate_file_path('map_.obj')
+            mtl_file = generate_file_path('map_.mtl')
+            thumbnail = generate_file_path('map_.jpg')
+
+            FileWaiter(obj_file).wait()
+            FileWaiter(mtl_file).wait()
+            FileWaiter(thumbnail).wait()
+
+            with open(obj_file, 'rb') as file:
+                obj_file = file.read()
+            with open(thumbnail, 'rb') as file:
+                thumbnail = file.read()
+            with open(mtl_file, 'rb') as file:
+                mtl_file = file.read()
+
+            new_map = MapFile(name, obj_file, mtl_file, thumbnail)
+
+            db.session.add(new_map)
+            db.session.commit()
+
+            return '', 204
+
+    models = db.session.query(MapFile).all()
+    if len(models) == 0:
+        models = None
+    return render_template('ar.html', form=form, models=models)
 
 
 @blueprint.route('/get_model', methods=['POST'])
@@ -160,6 +201,10 @@ def exceptions(e):
                   request.full_path,
                   tb)
     return "Internal Server Error", 500
+
+
+def generate_file_path(name):
+    return Path(getcwd() + '/app/ar_server/' + name).as_posix()
 
 
 ########################

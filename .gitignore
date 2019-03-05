@@ -27,7 +27,12 @@
 *.sql
 *.sqlite
 *.db
+
+# Models #
+##########
 *.osm
+*.mtl
+*.obj
 
 # Folders #
 ###########

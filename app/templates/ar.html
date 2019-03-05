@@ -5,23 +5,63 @@
     <meta name="viewport" content="initial-scale=1.0">
     <title>AR</title>
 
-    <link rel=stylesheet type=text/css href="../static/css/ar.css">
+    <link rel="stylesheet" href="../static/css/ar.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://lib.arvancloud.com/ar/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
     <script src="../static/js/ar.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCaIGVam3ZbXbjokw5Q1Hmf2wx-0VJ3R_Q&callback=initMap"
             async defer></script>
 </head>
 <body>
-<div id="map"></div>
+<div id="map">
+
+</div>
+
+<div class="menu-button-open">
+    <div class="bar1"></div>
+    <div class="bar2"></div>
+    <div class="bar3"></div>
+</div>
+
 <div class="form">
-    <h1 class="choose-zone-title">Выберите зону и нажмите "Отправить"</h1>
+    <div class="menu-button-close">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+    </div>
+    <div class="exit-button"><p>Выход</p></div>
+
+    <h1 class="choose-zone-title">Выберите зону <br> или введите координаты</h1>
     <form class="coordinate-send" name="send-coordinate" method="post">
-        <input type="hidden" name="right-up-lat" id="right-up-lat" >
-        <input type="hidden" name="right-up-lng" id="right-up-lng">
-        <input type="hidden" name="left-bottom-lat" id="left-bottom-lat">
-        <input type="hidden" name="left-bottom-lng" id="left-bottom-lng">
-        <button id="form-button">Отправить</button>
+        {{ form.right_up_lat(type='hidden') }}
+        {{ form.right_up_lng(type='hidden') }}
+        {{ form.left_bottom_lat(type='hidden') }}
+        {{ form.left_bottom_lng(type='hidden') }}
+        <p>Координаты правого верхнего угла</p>
+        {{ form.right_up() }}
+        <p>Координаты левого нижнего угла</p>
+        {{ form.left_bottom() }}
+
+        <p>Введите имя</p>
+        {{ form.map_name }}
+        {{ form.form_button() }}
     </form>
+    <br>
+    <p>Модели</p>
+    <div class="history-block">
+        {% if models or '' %}
+            {% for model in models %}
+                <div class="history-cell" id="" data-cell-id="">
+                    <img id="cell-photo" src="data:image/png;base64,{{ model.thumbnail | b64d }}" alt="preview"/>
+                    <p id="name-of-cell">
+                        {{ model.name }}
+                    </p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p style="color:red;">Nothing here</p>
+        {% endif %}
+    </div>
 </div>
 </body>
 </html>

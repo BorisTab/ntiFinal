@@ -1,6 +1,11 @@
 # -*- coding: utf-8 -*-
-import os
 import requests
+
+from pathlib import Path
+
+from os import chdir
+from os import system
+from os import getcwd
 
 
 class ModelGatherer:
@@ -22,7 +27,11 @@ class ModelGatherer:
             print('No nodes selected')
             return '400'
         else:
-            os.chdir(r'/var/apps/xnoobs/app/ar_server/models')
-            os.system(
-                'java -Djava.library.path="lib/jogl/linux-i586" -Xmx2G -jar OSM2World.jar -i map.osm -o map.obj --config config')
-            os.chdir('..')
+            cwd = Path(getcwd() + '/app/ar_server/models').as_posix()
+            chdir(cwd)
+            system(
+                'java -Djava.library.path="lib/jogl/linux-i586" -Xmx2G -jar OSM2World.jar '
+                '-i map.osm -o map.obj --config config'
+            )
+            chdir('..')
+
