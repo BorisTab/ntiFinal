@@ -13,7 +13,9 @@
             async defer></script>
 </head>
 <body>
-<div id="map"></div>
+<div id="map">
+
+</div>
 
 <div class="menu-button-open">
     <div class="bar1"></div>
@@ -31,20 +33,34 @@
 
     <h1 class="choose-zone-title">Выберите зону <br> или введите координаты</h1>
     <form class="coordinate-send" name="send-coordinate" method="post">
-        <input type="hidden" name="right-up-lat" id="right-up-lat" >
-        <input type="hidden" name="right-up-lng" id="right-up-lng">
-        <input type="hidden" name="left-bottom-lat" id="left-bottom-lat">
-        <input type="hidden" name="left-bottom-lng" id="left-bottom-lng">
-        <input type="hidden" name="selected-object" id="selected-object">
+        {{ form.right_up_lat(type='hidden') }}
+        {{ form.right_up_lng(type='hidden') }}
+        {{ form.left_bottom_lat(type='hidden') }}
+        {{ form.left_bottom_lng(type='hidden') }}
         <p>Координаты правого верхнего угла</p>
-        <input type="text" name="right-up" id="right-up" placeholder="широта;долгота">
+        {{ form.right_up() }}
         <p>Координаты левого нижнего угла</p>
-        <input type="text" name="left-bottom" id="left-bottom" placeholder="широта;долгота">
-        <button id="form-button">Отправить</button>
+        {{ form.left_bottom() }}
+
+        <p>Введите имя</p>
+        {{ form.map_name }}
+        {{ form.form_button() }}
     </form>
     <br>
     <p>Модели</p>
     <div class="history-block">
+        {% if models or '' %}
+            {% for model in models %}
+                <div class="history-cell" id="" data-cell-id="">
+                    <img id="cell-photo" src="data:image/png;base64,{{ model.thumbnail | b64d }}" alt="preview"/>
+                    <p id="name-of-cell">
+                        {{ model.name }}
+                    </p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p style="color:red;">Nothing here</p>
+        {% endif %}
     </div>
 </div>
 </body>

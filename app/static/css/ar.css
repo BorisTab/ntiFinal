@@ -59,7 +59,7 @@ html, body {
 .form p {
     color: #fcc422;
     padding: 2px; }
-.form #form-button {
+.form #form_button {
     background-color: #fcc422;
     border: none;
     height: 30px;
@@ -68,11 +68,11 @@ html, body {
     position: absolute;
     bottom: 5px;
     left: calc(50% - 40px); }
-.form #form-button:hover {
+.form #form_button:hover {
     outline: none;
     background-color: #fcd253;
     cursor: pointer; }
-.form #form-button:focus {
+.form #form_button:focus {
     outline: none; }
 .form .history-block {
     height: 260px;

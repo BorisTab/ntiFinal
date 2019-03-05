@@ -117,17 +117,17 @@ class ObjectsCell {
 $('document').ready(function () {
 
     $('.exit-button').click(function () {
-        window.location= '/login';
+        window.location= '/ar/login';
     });
 
     $.mask.definitions['~']='[+-]';
-    $('#right-up, #left-bottom').mask('~999.99; ~999.99');
+    $('#right_up, #left_bottom').mask('~999.99; ~999.99');
 
     $(".coordinate-send").submit(function() {
-        $('#right-up-lat').val(rightUpLat);
-        $('#right-up-lng').val(rightUpLng);
-        $('#left-bottom-lat').val(leftDownLat);
-        $('#left-bottom-lng').val(leftDownLng);
+        $('#right_up_lat').val(rightUpLat);
+        $('#right_up_lng').val(rightUpLng);
+        $('#left_bottom_lat').val(leftDownLat);
+        $('#left_bottom_lng').val(leftDownLng);
 
         let th = $(this);
         $.ajax({
@@ -162,16 +162,6 @@ $('document').ready(function () {
         $('.form').css('left', '0');
         $(this).css('display', 'none');
     });
-
-    let cell_1 = new ObjectsCell(1, 'https://media.dobrf.ru/backend/pictures/65936eda51b241868c73711858ac37ef.large.jpg',
-        'Название из БД');
-    let cell_2 = new ObjectsCell(2, 'https://pp.userapi.com/c845124/v845124231/2c49d/Kqgc1EkapK4.jpg?ava=1',
-        'Другое название');
-    let cell_3 = new ObjectsCell(3, 'https://pp.userapi.com/c845124/v845124231/2c49d/Kqgc1EkapK4.jpg?ava=1',
-        'Другое название');
-    cell_1.addObjectCell();
-    cell_2.addObjectCell();
-    cell_3.addObjectCell();
 
     $('.history-cell').click(function () {
         $(this).css('background-color', '#808080')
