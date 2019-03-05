@@ -1,0 +1,15 @@
+! This is an example for an OSM2World (http://osm2world.org/) config file.
+! It is not used by default. If you want to use a config file, try the
+! "--config <filename>" option on the command line when starting OSM2World.
+! For more options and documentation, see the OpenStreetMap wiki:
+! http://wiki.osm.org/OSM2World/Configuration_file
+
+# enable (true) or disable (false) terrain calculation
+createTerrain = true
+
+# sets the color of "empty" terrain. See Materials.java for other materials.
+material_TERRAIN_DEFAULT_color = #FFFFFF
+
+drawBuildingWindows = true
+
+

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import os
 import requests
 
@@ -21,7 +22,7 @@ class ModelGatherer:
             print('No nodes selected')
             return '400'
         else:
-            os.chdir(r'C:\Users\Skufler\Documents\xnoobs\app\ar_server\models')
+            os.chdir(r'/var/apps/xnoobs/app/ar_server/models')
             os.system(
                 'java -Djava.library.path="lib/jogl/linux-i586" -Xmx2G -jar OSM2World.jar -i map.osm -o map.obj --config config')
             os.chdir('..')

@@ -9,7 +9,7 @@ class Config(object):
     APP_DIR = os.path.abspath(os.path.dirname(__file__))
     PROJECT_ROOT = os.path.abspath(os.path.join(APP_DIR, os.pardir))
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///./data/users.db'
+    SQLALCHEMY_DATABASE_URI = 'sqlite:////var/apps/xnoobs/app/data/users.db'
     TESTING = False
 
 

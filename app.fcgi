@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+import sys
+import logging
 
 from autoapp import app
 from flup.server.fcgi import WSGIServer
@@ -14,7 +16,12 @@ class ScriptNameStripper(object):
         return self.app(environ, start_response)
 
 
+app.debug = True
 app = ScriptNameStripper(app)
 
+
 if __name__ == '__main__':
+    activate_this = '/var/apps/xnoobs/venv/bin/activate_this.py'
+    execfile(activate_this, dict(__file__=activate_this))
+
     WSGIServer(LighttpdCGIRootFix(app)).run()

@@ -1,6 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+import sys
 import hashlib
+import logging
+import traceback
+
+from time import strftime
+from logging.handlers import RotatingFileHandler
 
 from flask import abort
 from flask import url_for
@@ -24,8 +30,16 @@ from app.ar_server.models.forms.registration_form import RegistrationForm
 from app.ar_server.models.model_gatherer import ModelGatherer
 
 
-blueprint = Blueprint('ar', 'ar')
+reload(sys)
+sys.setdefaultencoding('UTF8')
 
+handler = RotatingFileHandler('app.log', maxBytes=10000, backupCount=3)
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.ERROR)
+logger.addHandler(handler)
+
+
+blueprint = Blueprint('ar', 'ar')
 login_manager.login_view = '/ar/login'
 
 
@@ -52,7 +66,7 @@ def login():
 
                     return redirect(_next or url_for('ar.main'))
             except Exception as e:
-                print(e.with_traceback(e.__traceback__))
+                print(e.args)
                 return abort(401)
 
     return render_template('login.html', form=login_form)
@@ -81,7 +95,7 @@ def register():
 
                 return redirect(_next or url_for('ar.main'))
             except Exception as e:
-                print(e.with_traceback(e.__traceback__))
+                print(e.args)
                 # ToDo: user exists
                 return abort(401)
     return render_template('register.html', form=register_form)
@@ -114,6 +128,38 @@ def get_model():
 @blueprint.route('/put', methods=['GET'])
 def put_file():
     pass
+
+
+@blueprint.after_request
+def after_request(response):
+    """ Logging after every request. """
+    # This avoids the duplication of registry in the log,
+    # since that 500 is already logged via @app.errorhandler.
+    if response.status_code != 500:
+        ts = strftime('[%Y-%b-%d %H:%M]')
+        logger.error('%s %s %s %s %s %s',
+                      ts,
+                      request.remote_addr,
+                      request.method,
+                      request.scheme,
+                      request.full_path,
+                      response.status)
+    return response
+
+
+@blueprint.errorhandler(Exception)
+def exceptions(e):
+    """ Logging after every Exception. """
+    ts = strftime('[%Y-%b-%d %H:%M]')
+    tb = traceback.format_exc()
+    logger.error('%s %s %s %s %s 5xx INTERNAL SERVER ERROR\n%s',
+                  ts,
+                  request.remote_addr,
+                  request.method,
+                  request.scheme,
+                  request.full_path,
+                  tb)
+    return "Internal Server Error", 500
 
 
 ########################
