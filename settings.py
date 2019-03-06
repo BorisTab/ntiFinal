@@ -1,15 +1,20 @@
-import os
+from os import path
+from os import pardir
+from os import getcwd
+from os import environ
+
+from pathlib import Path
 
 
 class Config(object):
     """
     Base configuration
     """
-    SECRET_KEY = os.environ.get('SECRET_KEY', 'secret-key')
-    APP_DIR = os.path.abspath(os.path.dirname(__file__))
-    PROJECT_ROOT = os.path.abspath(os.path.join(APP_DIR, os.pardir))
+    SECRET_KEY = environ.get('SECRET_KEY', 'secret-key')
+    APP_DIR = path.abspath(path.dirname(__file__))
+    PROJECT_ROOT = path.abspath(path.join(APP_DIR, pardir))
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    SQLALCHEMY_DATABASE_URI = 'sqlite:////var/apps/xnoobs/app/data/users.db'
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + Path(getcwd() + '/app/data/users.db').as_posix()
     TESTING = False
 
 

@@ -13,6 +13,6 @@ class LoginForm(Form):
     ])
     password = PasswordField('Password', [
         validators.DataRequired(),
-        validators.Length(min=6, max=30)
+        # validators.Length(min=6, max=30)
     ])
     button = SubmitField('Войти')

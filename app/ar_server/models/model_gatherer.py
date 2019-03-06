@@ -27,11 +27,10 @@ class ModelGatherer:
             print('No nodes selected')
             return '400'
         else:
-            cwd = Path(getcwd() + '/app/ar_server/models').as_posix()
+            cwd = Path(getcwd() + '/app/ar_server/models/').as_posix()
             chdir(cwd)
             system(
                 'java -Djava.library.path="lib/jogl/linux-i586" -Xmx2G -jar OSM2World.jar '
                 '-i map.osm -o map.obj --config config'
             )
             chdir('..')
-

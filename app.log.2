@@ -1,130 +1,165 @@
-[2019-Mar-03 21:15] 176.99.175.200 GET https /ar/create? 5xx INTERNAL SERVER ERROR
-Traceback (most recent call last):
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1813, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1799, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/var/apps/xnoobs/app/ar_server/views.py", line 173, in create_db
-    db.create_all()
-  File "/usr/local/lib/python2.7/dist-packages/flask_sqlalchemy/__init__.py", line 963, in create_all
-    self._execute_for_all_tables(app, bind, 'create_all')
-  File "/usr/local/lib/python2.7/dist-packages/flask_sqlalchemy/__init__.py", line 955, in _execute_for_all_tables
-    op(bind=self.get_engine(app, bind), **extra)
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/sql/schema.py", line 4200, in create_all
-    ddl.SchemaGenerator, self, checkfirst=checkfirst, tables=tables
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 2010, in _run_visitor
-    with self._optional_conn_ctx_manager(connection) as conn:
-  File "/usr/lib/python2.7/contextlib.py", line 17, in __enter__
-    return self.gen.next()
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 2002, in _optional_conn_ctx_manager
-    with self.contextual_connect() as conn:
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 2192, in contextual_connect
-    self._wrap_pool_connect(self.pool.connect, None),
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 2232, in _wrap_pool_connect
-    e, dialect, self
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1528, in _handle_dbapi_exception_noconnection
-    util.raise_from_cause(sqlalchemy_exception, exc_info)
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/util/compat.py", line 296, in raise_from_cause
-    reraise(type(exception), exception, tb=exc_tb, cause=cause)
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 2228, in _wrap_pool_connect
-    return fn()
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/pool.py", line 425, in connect
-    return _ConnectionFairy._checkout(self)
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/pool.py", line 822, in _checkout
-    fairy = _ConnectionRecord.checkout(pool)
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/pool.py", line 554, in checkout
-    rec = pool._do_get()
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/pool.py", line 1346, in _do_get
-    return self._create_connection()
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/pool.py", line 370, in _create_connection
-    return _ConnectionRecord(self)
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/pool.py", line 499, in __init__
-    self.__connect(first_connect_check=True)
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/pool.py", line 701, in __connect
-    connection = pool._invoke_creator(self)
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/strategies.py", line 114, in connect
-    return dialect.connect(*cargs, **cparams)
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/default.py", line 437, in connect
-    return self.dbapi.connect(*cargs, **cparams)
-OperationalError: (sqlite3.OperationalError) unable to open database file (Background on this error at: http://sqlalche.me/e/e3q8)
 
-[2019-Mar-03 21:18] 176.99.175.200 GET https /ar/? 302 FOUND
-[2019-Mar-03 21:18] 176.99.175.200 GET https /ar/login?next=%2Far%2F 200 OK
-[2019-Mar-03 21:18] 176.99.175.200 GET https /ar/? 302 FOUND
-[2019-Mar-03 21:18] 176.99.175.200 GET https /ar/login?next=%2Far%2F 200 OK
-[2019-Mar-03 21:18] 176.99.175.200 GET https /ar/create? 5xx INTERNAL SERVER ERROR
-Traceback (most recent call last):
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1813, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1799, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/var/apps/xnoobs/app/ar_server/views.py", line 173, in create_db
-    db.create_all()
-  File "/usr/local/lib/python2.7/dist-packages/flask_sqlalchemy/__init__.py", line 963, in create_all
-    self._execute_for_all_tables(app, bind, 'create_all')
-  File "/usr/local/lib/python2.7/dist-packages/flask_sqlalchemy/__init__.py", line 955, in _execute_for_all_tables
-    op(bind=self.get_engine(app, bind), **extra)
-  File "/usr/local/lib/python2.7/dist-packages/flask_sqlalchemy/__init__.py", line 896, in get_engine
-    return connector.get_engine()
-  File "/usr/local/lib/python2.7/dist-packages/flask_sqlalchemy/__init__.py", line 553, in get_engine
-    info = make_url(uri)
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/url.py", line 225, in make_url
-    return _parse_rfc1738_args(name_or_url)
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/url.py", line 287, in _parse_rfc1738_args
-    "Could not parse rfc1738 URL from string '%s'" % name
-ArgumentError: Could not parse rfc1738 URL from string '/var/apps/xnoobs/app/data/users.db'
-
-[2019-Mar-03 21:20] 176.99.175.200 GET https /ar/create? 5xx INTERNAL SERVER ERROR
-Traceback (most recent call last):
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1813, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1799, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/var/apps/xnoobs/app/ar_server/views.py", line 173, in create_db
-    db.create_all()
-  File "/usr/local/lib/python2.7/dist-packages/flask_sqlalchemy/__init__.py", line 963, in create_all
-    self._execute_for_all_tables(app, bind, 'create_all')
-  File "/usr/local/lib/python2.7/dist-packages/flask_sqlalchemy/__init__.py", line 955, in _execute_for_all_tables
-    op(bind=self.get_engine(app, bind), **extra)
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/sql/schema.py", line 4200, in create_all
-    ddl.SchemaGenerator, self, checkfirst=checkfirst, tables=tables
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 2010, in _run_visitor
-    with self._optional_conn_ctx_manager(connection) as conn:
-  File "/usr/lib/python2.7/contextlib.py", line 17, in __enter__
-    return self.gen.next()
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 2002, in _optional_conn_ctx_manager
-    with self.contextual_connect() as conn:
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 2192, in contextual_connect
-    self._wrap_pool_connect(self.pool.connect, None),
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 2232, in _wrap_pool_connect
-    e, dialect, self
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1528, in _handle_dbapi_exception_noconnection
-    util.raise_from_cause(sqlalchemy_exception, exc_info)
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/util/compat.py", line 296, in raise_from_cause
-    reraise(type(exception), exception, tb=exc_tb, cause=cause)
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 2228, in _wrap_pool_connect
-    return fn()
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/pool.py", line 425, in connect
-    return _ConnectionFairy._checkout(self)
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/pool.py", line 822, in _checkout
-    fairy = _ConnectionRecord.checkout(pool)
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/pool.py", line 554, in checkout
-    rec = pool._do_get()
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/pool.py", line 1346, in _do_get
-    return self._create_connection()
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/pool.py", line 370, in _create_connection
-    return _ConnectionRecord(self)
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/pool.py", line 499, in __init__
-    self.__connect(first_connect_check=True)
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/pool.py", line 701, in __connect
-    connection = pool._invoke_creator(self)
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/strategies.py", line 114, in connect
-    return dialect.connect(*cargs, **cparams)
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/default.py", line 437, in connect
-    return self.dbapi.connect(*cargs, **cparams)
-OperationalError: (sqlite3.OperationalError) unable to open database file (Background on this error at: http://sqlalche.me/e/e3q8)
-
-[2019-Mar-03 21:44] 176.99.175.200 GET https /ar/? 302 FOUND
-[2019-Mar-03 21:44] 176.99.175.200 GET https /ar/login?next=%2Far%2F 200 OK
-[2019-Mar-03 21:44] 176.99.175.200 GET https /ar/? 302 FOUND
-[2019-Mar-03 21:44] 176.99.175.200 GET https /ar/login?next=%2Far%2F 200 OK
+[2019-Mar-06 00:54] 127.0.0.1 POST http /ar/? 204 NO CONTENT
+[2019-Mar-06 00:55] 127.0.0.1 POST http /ar/? 204 NO CONTENT
+[2019-Mar-06 01:27] 127.0.0.1 GET http /ar/? 302 FOUND
+[2019-Mar-06 01:27] 127.0.0.1 GET http /ar/login?next=%2Far%2F 200 OK
+[2019-Mar-06 01:27] 127.0.0.1 GET http /ar/? 302 FOUND
+[2019-Mar-06 01:27] 127.0.0.1 GET http /ar/login?next=%2Far%2F 200 OK
+[2019-Mar-06 01:27] 127.0.0.1 GET http /ar/register? 200 OK
+[2019-Mar-06 01:27] 127.0.0.1 POST http /ar/register? 302 FOUND
+[2019-Mar-06 01:27] 127.0.0.1 GET http /ar/? 200 OK
+[2019-Mar-06 09:27] 127.0.0.1 GET http /ar/drop? 200 OK
+[2019-Mar-06 09:27] 127.0.0.1 GET http /ar/create? 200 OK
+[2019-Mar-06 09:27] 127.0.0.1 GET http /ar/? 302 FOUND
+[2019-Mar-06 09:27] 127.0.0.1 GET http /ar/login?next=%2Far%2F 200 OK
+[2019-Mar-06 09:28] 127.0.0.1 GET http /ar/register? 200 OK
+[2019-Mar-06 09:28] 127.0.0.1 POST http /ar/register? 302 FOUND
+[2019-Mar-06 10:24] 127.0.0.1 GET http /ar/1? 200 OK
+[2019-Mar-06 10:27] 127.0.0.1 GET http /ar/? 200 OK
+[2019-Mar-06 10:27] 127.0.0.1 GET http /ar/? 302 FOUND
+[2019-Mar-06 10:27] 127.0.0.1 GET http /ar/login?next=%2Far%2F 200 OK
+[2019-Mar-06 10:27] 127.0.0.1 GET http /ar/register? 200 OK
+[2019-Mar-06 10:27] 127.0.0.1 GET http /ar/login? 200 OK
+[2019-Mar-06 10:27] 127.0.0.1 GET http /ar/? 302 FOUND
+[2019-Mar-06 10:27] 127.0.0.1 GET http /ar/login?next=%2Far%2F 200 OK
+[2019-Mar-06 10:27] 127.0.0.1 GET http /ar/? 302 FOUND
+[2019-Mar-06 10:27] 127.0.0.1 GET http /ar/login?next=%2Far%2F 200 OK
+[2019-Mar-06 10:27] 127.0.0.1 GET http /ar/? 302 FOUND
+[2019-Mar-06 10:27] 127.0.0.1 GET http /ar/login?next=%2Far%2F 200 OK
+[2019-Mar-06 10:27] 127.0.0.1 GET http /ar/? 302 FOUND
+[2019-Mar-06 10:27] 127.0.0.1 GET http /ar/login?next=%2Far%2F 200 OK
+[2019-Mar-06 10:27] 127.0.0.1 GET http /ar/register? 200 OK
+[2019-Mar-06 10:28] 127.0.0.1 GET http /ar/create? 200 OK
+[2019-Mar-06 10:28] 127.0.0.1 GET http /ar/? 302 FOUND
+[2019-Mar-06 10:28] 127.0.0.1 GET http /ar/login?next=%2Far%2F 200 OK
+[2019-Mar-06 10:29] 127.0.0.1 GET http /ar/? 302 FOUND
+[2019-Mar-06 10:29] 127.0.0.1 GET http /ar/login?next=%2Far%2F 200 OK
+[2019-Mar-06 10:29] 127.0.0.1 GET http /ar/? 302 FOUND
+[2019-Mar-06 10:29] 127.0.0.1 GET http /ar/login?next=%2Far%2F 200 OK
+[2019-Mar-06 10:29] 127.0.0.1 GET http /ar/? 302 FOUND
+[2019-Mar-06 10:29] 127.0.0.1 GET http /ar/login?next=%2Far%2F 200 OK
+[2019-Mar-06 10:30] 127.0.0.1 GET http /ar/register? 200 OK
+[2019-Mar-06 10:30] 127.0.0.1 POST http /ar/register? 302 FOUND
+[2019-Mar-06 10:30] 127.0.0.1 GET http /ar/?id=2 200 OK
+[2019-Mar-06 10:32] 127.0.0.1 GET http /ar/? 200 OK
+[2019-Mar-06 10:32] 127.0.0.1 GET http /ar/? 200 OK
+[2019-Mar-06 10:33] 127.0.0.1 GET http /ar/? 200 OK
+[2019-Mar-06 10:35] 127.0.0.1 POST http /ar/? 204 NO CONTENT
+[2019-Mar-06 11:26] 127.0.0.1 GET http /ar/? 200 OK
+[2019-Mar-06 11:35] 127.0.0.1 POST http /ar/? 302 FOUND
+[2019-Mar-06 11:35] 127.0.0.1 GET http /ar/? 200 OK
+[2019-Mar-06 11:35] 127.0.0.1 GET http /ar/? 200 OK
+[2019-Mar-06 12:47] 127.0.0.1 GET http /ar/? 200 OK
+[2019-Mar-06 12:48] 127.0.0.1 GET http /ar/? 200 OK
+[2019-Mar-06 12:49] 127.0.0.1 GET http /ar/? 200 OK
+[2019-Mar-06 12:50] 127.0.0.1 POST http /ar/? 302 FOUND
+[2019-Mar-06 12:50] 127.0.0.1 GET http /ar/? 200 OK
+[2019-Mar-06 12:50] 127.0.0.1 GET http /ar/? 200 OK
+[2019-Mar-06 13:00] 127.0.0.1 GET http /ar/login? 302 FOUND
+[2019-Mar-06 13:00] 127.0.0.1 GET http /ar/? 200 OK
+[2019-Mar-06 13:00] 127.0.0.1 GET http /ar/login? 302 FOUND
+[2019-Mar-06 13:00] 127.0.0.1 GET http /ar/? 200 OK
+[2019-Mar-06 13:00] 127.0.0.1 GET http /ar/login? 302 FOUND
+[2019-Mar-06 13:00] 127.0.0.1 GET http /ar/? 200 OK
+[2019-Mar-06 13:01] 127.0.0.1 GET http /ar/login? 302 FOUND
+[2019-Mar-06 13:01] 127.0.0.1 GET http /ar/? 200 OK
+[2019-Mar-06 13:01] 127.0.0.1 GET http /ar/? 302 FOUND
+[2019-Mar-06 13:01] 127.0.0.1 GET http /ar/? 302 FOUND
+[2019-Mar-06 13:01] 127.0.0.1 GET http /ar/login?next=%2Far%2F 200 OK
+[2019-Mar-06 13:01] 127.0.0.1 GET http /ar/login?next=%2Far%2F 200 OK
+[2019-Mar-06 13:01] 127.0.0.1 GET http /ar/register? 200 OK
+[2019-Mar-06 13:02] 127.0.0.1 GET http /ar/? 302 FOUND
+[2019-Mar-06 13:02] 127.0.0.1 GET http /ar/? 302 FOUND
+[2019-Mar-06 13:02] 127.0.0.1 GET http /ar/login?next=%2Far%2F 200 OK
+[2019-Mar-06 13:02] 127.0.0.1 GET http /ar/login?next=%2Far%2F 200 OK
+[2019-Mar-06 13:02] 127.0.0.1 GET http /ar/register? 200 OK
+[2019-Mar-06 13:03] 127.0.0.1 POST http /ar/register? 302 FOUND
+[2019-Mar-06 13:03] 127.0.0.1 GET http /ar/?id=3 200 OK
+[2019-Mar-06 13:03] 127.0.0.1 GET http /ar/login? 302 FOUND
+[2019-Mar-06 13:03] 127.0.0.1 GET http /ar/? 200 OK
+[2019-Mar-06 13:05] 127.0.0.1 GET http /ar/? 302 FOUND
+[2019-Mar-06 13:05] 127.0.0.1 GET http /ar/? 302 FOUND
+[2019-Mar-06 13:05] 127.0.0.1 GET http /ar/login?next=%2Far%2F 200 OK
+[2019-Mar-06 13:05] 127.0.0.1 GET http /ar/login?next=%2Far%2F 200 OK
+[2019-Mar-06 13:05] 127.0.0.1 GET http /ar/register? 200 OK
+[2019-Mar-06 13:05] 127.0.0.1 GET http /ar/login? 200 OK
+[2019-Mar-06 13:05] 127.0.0.1 POST http /ar/login? 302 FOUND
+[2019-Mar-06 13:06] 127.0.0.1 GET http /ar/?id=3 200 OK
+[2019-Mar-06 13:06] 127.0.0.1 GET http /ar/?id=3 200 OK
+[2019-Mar-06 13:07] 127.0.0.1 GET http /ar/?id=3 200 OK
+[2019-Mar-06 13:07] 127.0.0.1 GET http /ar/?id=3 200 OK
+[2019-Mar-06 13:12] 127.0.0.1 POST http /ar/?id=3 302 FOUND
+[2019-Mar-06 13:12] 127.0.0.1 GET http /ar/? 200 OK
+[2019-Mar-06 13:12] 127.0.0.1 GET http /ar/?id=3 200 OK
+[2019-Mar-06 13:14] 127.0.0.1 POST http /ar/?id=3 302 FOUND
+[2019-Mar-06 13:14] 127.0.0.1 GET http /ar/? 200 OK
+[2019-Mar-06 13:14] 127.0.0.1 GET http /ar/?id=3 200 OK
+[2019-Mar-06 13:16] 127.0.0.1 GET http /ar/login? 302 FOUND
+[2019-Mar-06 13:16] 127.0.0.1 GET http /ar/? 200 OK
+[2019-Mar-06 13:17] 127.0.0.1 GET http /ar/login? 302 FOUND
+[2019-Mar-06 13:19] 127.0.0.1 GET http /ar/? 302 FOUND
+[2019-Mar-06 13:19] 127.0.0.1 GET http /ar/? 302 FOUND
+[2019-Mar-06 13:19] 127.0.0.1 GET http /ar/login?next=%2Far%2F 200 OK
+[2019-Mar-06 13:19] 127.0.0.1 GET http /ar/login?next=%2Far%2F 200 OK
+[2019-Mar-06 13:19] 127.0.0.1 POST http /ar/login? 302 FOUND
+[2019-Mar-06 13:19] 127.0.0.1 GET http /ar/?id=3 200 OK
+[2019-Mar-06 13:19] 127.0.0.1 GET http /ar/login? 302 FOUND
+[2019-Mar-06 13:19] 127.0.0.1 GET http /ar/? 200 OK
+[2019-Mar-06 13:20] 127.0.0.1 GET http /ar/login? 302 FOUND
+[2019-Mar-06 13:20] 127.0.0.1 GET http /ar/? 200 OK
+[2019-Mar-06 19:44] 127.0.0.1 GET http /ar/drop? 200 OK
+[2019-Mar-06 19:44] 127.0.0.1 GET http /ar/create? 200 OK
+[2019-Mar-06 19:45] 127.0.0.1 GET http /ar/? 302 FOUND
+[2019-Mar-06 19:45] 127.0.0.1 GET http /ar/login?next=%2Far%2F 200 OK
+[2019-Mar-06 19:45] 127.0.0.1 GET http /ar/register? 200 OK
+[2019-Mar-06 19:45] 127.0.0.1 POST http /ar/register? 302 FOUND
+[2019-Mar-06 19:45] 127.0.0.1 GET http /ar/?id=1 302 FOUND
+[2019-Mar-06 19:45] 127.0.0.1 GET http /ar/login?next=%2Far%2F%3Fid%3D1 200 OK
+[2019-Mar-06 19:46] 127.0.0.1 GET http /ar/? 302 FOUND
+[2019-Mar-06 19:46] 127.0.0.1 GET http /ar/login?next=%2Far%2F 200 OK
+[2019-Mar-06 19:46] 127.0.0.1 GET http /ar/register? 200 OK
+[2019-Mar-06 19:48] 127.0.0.1 GET http /ar/? 302 FOUND
+[2019-Mar-06 19:48] 127.0.0.1 GET http /ar/login?next=%2Far%2F 200 OK
+[2019-Mar-06 19:48] 127.0.0.1 GET http /ar/? 302 FOUND
+[2019-Mar-06 19:48] 127.0.0.1 GET http /ar/login?next=%2Far%2F 200 OK
+[2019-Mar-06 19:48] 127.0.0.1 GET http /ar/register? 200 OK
+[2019-Mar-06 21:21] 127.0.0.1 GET http /ar/? 302 FOUND
+[2019-Mar-06 21:21] 127.0.0.1 GET http /ar/login?next=%2Far%2F 200 OK
+[2019-Mar-06 21:21] 127.0.0.1 GET http /ar/? 302 FOUND
+[2019-Mar-06 21:21] 127.0.0.1 GET http /ar/login?next=%2Far%2F 200 OK
+[2019-Mar-06 21:21] 127.0.0.1 GET http /ar/? 302 FOUND
+[2019-Mar-06 21:21] 127.0.0.1 GET http /ar/login?next=%2Far%2F 200 OK
+[2019-Mar-06 21:21] 127.0.0.1 GET http /ar/register? 200 OK
+[2019-Mar-06 21:21] 127.0.0.1 GET http /ar/login? 200 OK
+[2019-Mar-06 21:21] 127.0.0.1 POST http /ar/login? 302 FOUND
+[2019-Mar-06 21:21] 127.0.0.1 GET http /ar/?id=1 302 FOUND
+[2019-Mar-06 21:21] 127.0.0.1 GET http /ar/login?next=%2Far%2F%3Fid%3D1 200 OK
+[2019-Mar-06 21:21] 127.0.0.1 GET http /ar/register? 200 OK
+[2019-Mar-06 21:21] 127.0.0.1 GET http /ar/login? 200 OK
+[2019-Mar-06 21:21] 127.0.0.1 GET http /ar/register? 200 OK
+[2019-Mar-06 21:21] 127.0.0.1 GET http /ar/login? 200 OK
+[2019-Mar-06 21:21] 127.0.0.1 GET http /ar/register? 200 OK
+[2019-Mar-06 21:21] 127.0.0.1 GET http /ar/login? 200 OK
+[2019-Mar-06 21:21] 127.0.0.1 GET http /ar/register? 200 OK
+[2019-Mar-06 21:22] 127.0.0.1 GET http /ar/login? 200 OK
+[2019-Mar-06 21:22] 127.0.0.1 GET http /ar/register? 200 OK
+[2019-Mar-06 21:22] 127.0.0.1 GET http /ar/login? 200 OK
+[2019-Mar-06 21:22] 127.0.0.1 POST http /ar/login? 302 FOUND
+[2019-Mar-06 21:22] 127.0.0.1 GET http /ar/?id=1 302 FOUND
+[2019-Mar-06 21:22] 127.0.0.1 GET http /ar/login?next=%2Far%2F%3Fid%3D1 200 OK
+[2019-Mar-06 21:22] 127.0.0.1 POST http /ar/login? 302 FOUND
+[2019-Mar-06 21:22] 127.0.0.1 GET http /ar/?id=1 302 FOUND
+[2019-Mar-06 21:22] 127.0.0.1 GET http /ar/login?next=%2Far%2F%3Fid%3D1 200 OK
+[2019-Mar-06 21:25] 127.0.0.1 GET http /ar/? 302 FOUND
+[2019-Mar-06 21:25] 127.0.0.1 GET http /ar/login?next=%2Far%2F 200 OK
+[2019-Mar-06 21:25] 127.0.0.1 GET http /ar/? 302 FOUND
+[2019-Mar-06 21:25] 127.0.0.1 GET http /ar/login?next=%2Far%2F 200 OK
+[2019-Mar-06 21:25] 127.0.0.1 GET http /ar/register? 200 OK
+[2019-Mar-06 21:25] 127.0.0.1 GET http /ar/login? 200 OK
+[2019-Mar-06 21:25] 127.0.0.1 GET http /ar/register? 200 OK
+[2019-Mar-06 21:25] 127.0.0.1 GET http /ar/login? 200 OK
+[2019-Mar-06 21:25] 127.0.0.1 GET http /ar/register? 200 OK
+[2019-Mar-06 21:25] 127.0.0.1 GET http /ar/login? 200 OK
+[2019-Mar-06 21:25] 127.0.0.1 GET http /ar/register? 200 OK
+[2019-Mar-06 21:25] 127.0.0.1 GET http /ar/login? 200 OK
+[2019-Mar-06 21:25] 127.0.0.1 POST http /ar/login? 302 FOUND

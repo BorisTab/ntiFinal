@@ -29,7 +29,7 @@
         <div class="bar2"></div>
         <div class="bar3"></div>
     </div>
-    <div class="exit-button"><p>Выход</p></div>
+    <div class="exit-button" onclick="window.location.href='{{ url_for('ar.logout') }}'"><p>Выход</p></div>
 
     <h1 class="choose-zone-title">Выберите зону <br> или введите координаты</h1>
     <form class="coordinate-send" name="send-coordinate" method="post">
