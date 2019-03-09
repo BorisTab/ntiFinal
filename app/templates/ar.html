@@ -5,6 +5,7 @@
     <meta name="viewport" content="initial-scale=1.0">
     <title>AR</title>
 
+    <link rel="stylesheet" href="../static/css/AddAR.css">
     <link rel="stylesheet" href="../static/css/ar.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://lib.arvancloud.com/ar/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
@@ -17,18 +18,67 @@
 
 </div>
 
-<div class="menu-button-open">
+<div class="menu-mobile">
     <div class="bar1"></div>
     <div class="bar2"></div>
     <div class="bar3"></div>
 </div>
 
-<div class="form">
+<section class="add3D" id="addAR">
     <div class="menu-button-close">
         <div class="bar1"></div>
         <div class="bar2"></div>
         <div class="bar3"></div>
     </div>
+    <div class="main active menu">
+        <a href="#openModal_1" class="bl">
+            <div class="image">
+                <img src="https://github.com/timakon/Js_Menu/blob/master/images/cat1.jpg?raw=true" alt="">
+            </div>
+        </a>
+        <a href="#openModal_2" class="bl">
+            <div class="image">
+                <img src="https://github.com/timakon/Js_Menu/blob/master/images/cat2.jpg?raw=true">
+            </div>
+        </a>
+        <a href="#openModal_3" class="bl">
+            <div class="image">
+                <img src="https://github.com/timakon/Js_Menu/blob/master/images/cat3.jpg?raw=true">
+            </div>
+        </a>
+        <a href="#openModal_4" class="bl">
+            <div class="image">
+                <img src="https://github.com/timakon/Js_Menu/blob/master/images/cat4.jpg?raw=true">
+            </div>
+        </a>
+        <a href="#openModal_5" class="bl">
+            <div class="image">
+                <img src="https://github.com/timakon/Js_Menu/blob/master/images/cat5.jpg?raw=true">
+            </div>
+        </a>
+        <a href="#openModal_6" class="bl">
+            <div class="image">
+                <img src="https://github.com/timakon/Js_Menu/blob/master/images/cat6.jpg?raw=true">
+            </div>
+        </a>
+    </div>
+
+
+    <div id="openModal_1" class="modalDialog">
+        <div>
+            <a href="#close" class="close">X</a>
+            <iframe class="ar_3d" src="https://sketchfab.com/models/4fe3736f06144b428da0a9f7387bf9c0/embed?autostart=1" frameborder="0" allow="autoplay; fullscreen; vr" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+        </div>
+    </div>
+</section>
+
+<div class="form">
+    <div class="menu-button-open">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+    </div>
+    <div class="map-button"><p>Карта</p></div>
     <div class="exit-button" onclick="window.location.href='{{ url_for('ar.logout') }}'"><p>Выход</p></div>
 
     <h1 class="choose-zone-title">Выберите зону <br> или введите координаты</h1>
@@ -61,6 +111,13 @@
         {% else %}
             <p style="color:red;">Nothing here</p>
         {% endif %}
+    </div>
+</div>
+
+<div class="hide-button">
+    <div class="arrow-block">
+        <div class="bar1"></div>
+        <div class="bar3"></div>
     </div>
 </div>
 </body>

@@ -117,17 +117,17 @@ class ObjectsCell {
 $('document').ready(function () {
 
     $('.exit-button').click(function () {
-        window.location= '/ar/login';
+        window.location= '/login';
     });
 
     $.mask.definitions['~']='[+-]';
-    $('#right_up, #left_bottom').mask('~999.99; ~999.99');
+    $('#right-up, #left-bottom').mask('~999.99; ~999.99');
 
     $(".coordinate-send").submit(function() {
-        $('#right_up_lat').val(rightUpLat);
-        $('#right_up_lng').val(rightUpLng);
-        $('#left_bottom_lat').val(leftDownLat);
-        $('#left_bottom_lng').val(leftDownLng);
+        $('#right-up-lat').val(rightUpLat);
+        $('#right-up-lng').val(rightUpLng);
+        $('#left-bottom-lat').val(leftDownLat);
+        $('#left-bottom-lng').val(leftDownLng);
 
         let th = $(this);
         $.ajax({
@@ -152,20 +152,43 @@ $('document').ready(function () {
 
     ////////     UI     //////////
 
-    $('.menu-button-close').click(function () {
-        $('.form').css('left', '-320px');
-        setTimeout(function () {
-            $('.menu-button-open').css('display', 'inline-block');
-        }, 1500);
-    });
     $('.menu-button-open').click(function () {
+        // $('.form').css('left', '100%');
+        $('section').css('right', '0');
+    });
+    $('.menu-button-close').click(function () {
         $('.form').css('left', '0');
-        $(this).css('display', 'none');
+        $('section').css('right', '100%');
+    });
+    $('.map-button').click(function () {
+        $('.form').css('left', '-500px');
+        setTimeout(function () {
+            $('.menu-mobile').css('display', 'inline-block');
+        }, 1000);
+    });
+    $('.menu-mobile').click(function () {
+        $('.menu-mobile').css('display', 'none');
+        $('.form').css('left', '0');
+    });
+
+    let hideCheck = false;
+    $('.hide-button').click(function () {
+        if(!hideCheck) {
+            $('.form').css('left', '-300px');
+            $(this).css('left', '0');
+            $('.arrow-block').css('transform', 'rotate(180deg)');
+            hideCheck = true
+        } else {
+            $('.form').css('left', '0');
+            $(this).css('left', '300px');
+            $('.arrow-block').css('transform', 'rotate(0)');
+            hideCheck = false;
+        }
     });
 
     $('.history-cell').click(function () {
         $(this).css('background-color', '#808080')
-            .siblings().css('background-color', '#fff');
+            .siblings().css('background-color', '#0071f0');
 
         $('#selected-object').val($(this).data('cell-id'));                        //отсылаю Id выбранной модели
     });
