@@ -7,7 +7,6 @@ import traceback
 
 from os import getcwd
 from time import strftime
-from threading import Thread
 from logging.handlers import RotatingFileHandler
 
 from flask import abort
@@ -19,7 +18,6 @@ from flask import Blueprint
 from flask import render_template
 
 from pathlib import Path
-# from requests import
 
 from app.constants import salt
 
@@ -34,7 +32,6 @@ from app.ar_server.models.db_models import Users
 from app.ar_server.models.db_models import MapFile
 
 from app.ar_server.models.file_waiter import FileWaiter
-from app.ar_server.models.asset_sender import AssetSender
 from app.ar_server.models.model_gatherer import ModelGatherer
 
 from app.ar_server.models.forms.login_form import LoginForm
@@ -61,6 +58,17 @@ login_manager.login_view = '/ar/login'
 
 @blueprint.route('/login', methods=['GET', 'POST'])
 def login():
+    if request.json:
+        json = request.json
+
+        user = db.session.query(Users).filter_by(email=json['login']).first()
+        if user.password == secure_password(json['password']):
+            user.authenticated = True
+            login_user(user)
+
+            db.session.commit()
+            return '200'
+
     login_form = LoginForm(request.form)
 
     if current_user.is_authenticated:
@@ -69,21 +77,22 @@ def login():
         _login = login_form.data['email']
         password = login_form.data['password'].encode('utf-8')
 
-        password = hashlib.sha256(password + salt).hexdigest()
+        password = secure_password(password)
 
         # ToDo: add frontend validation
         if login_form.validate():
-            user = db.session.query(Users).filter_by(email=_login, password=password).first()
+            user = db.session.query(Users).filter_by(email=_login).first()
 
             # ToDo: get id and redirect to /ar/<int:id> after validation
             try:
                 if user.password == password:
                     user.authenticated = True
                     login_user(user)
-                    # _next = request.args.get('next')
 
                     db.session.commit()
                     return redirect(url_for('ar.main', _id=user.id))
+                else:
+                    return 'bad password'
             except Exception as exception:
                 print(exception.args)
                 return abort(401)
@@ -93,6 +102,17 @@ def login():
 
 @blueprint.route('/register', methods=['GET', 'POST'])
 def register():
+    if request.json:
+        json = request.json
+
+        new_user = Users(json['login'], secure_password(json['password']))
+        new_user.authenticated = True
+        db.session.add(new_user)
+        db.session.commit()
+
+        login_user(new_user)
+        return '200'
+
     register_form = RegistrationForm(request.form)
 
     if current_user.is_authenticated:
@@ -107,7 +127,7 @@ def register():
         # Stepic, vk ... uses same pattern
         if register_form.validate():
             try:
-                new_user = Users(form_login, hashlib.sha256(form_password + salt).hexdigest())
+                new_user = Users(form_login, secure_password(form_password))
                 new_user.authenticated = True
                 db.session.add(new_user)
                 db.session.commit()
@@ -186,27 +206,19 @@ def main(_id=''):
     return render_template('ar.html', form=form, models=models)
 
 
-class Building(object):
-
-    def __init__(self, obj, mtl, jpg):
-        self.obj = obj
-        self.mtl = mtl
-        self.jpg = jpg
-
-
 @blueprint.route('/status/<int:_id>', methods=['GET'])
 def status(_id):
     user = db.session.query(Users).filter_by(id=_id).first()
 
     map_files = []
     rows = db.session.query(MapFile).order_by(MapFile.id.desc()).limit(user.n_last).all()
-    # rows = rows[::-1]
 
     for i in range(user.n_last):
         map_files.append([
-            str(rows[i].obj_file),
-            str(rows[i].textures),
-            str(rows[i].thumbnail)
+            str(rows[i].obj_file, 'utf-8'),
+            str(rows[i].textures, 'utf-8'),
+            str(rows[i].thumbnail)  # ToDo: check this code from Unity
+            # base64.b64encode()
         ])
 
     user.n_last = 0
@@ -216,13 +228,8 @@ def status(_id):
     return jsonify(files)
 
 
-def collect_files():
-    files = [
-        open('map_.obj').read(),
-        open('map_.mtl').read(),
-        open('map_.jpg').read(),
-    ]
-    return files
+def secure_password(pwd):
+    return str(hashlib.sha256((str(pwd) + str(salt)).encode('utf-8')).hexdigest())
 
 
 @blueprint.after_request

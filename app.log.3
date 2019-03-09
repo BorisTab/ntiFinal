@@ -1,142 +1,151 @@
-[2019-Mar-03 21:44] 176.99.175.200 GET https /ar/create? 5xx INTERNAL SERVER ERROR
-Traceback (most recent call last):
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1813, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1799, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/var/apps/xnoobs/app/ar_server/views.py", line 173, in create_db
-    db.create_all()
-  File "/usr/local/lib/python2.7/dist-packages/flask_sqlalchemy/__init__.py", line 963, in create_all
-    self._execute_for_all_tables(app, bind, 'create_all')
-  File "/usr/local/lib/python2.7/dist-packages/flask_sqlalchemy/__init__.py", line 955, in _execute_for_all_tables
-    op(bind=self.get_engine(app, bind), **extra)
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/sql/schema.py", line 4200, in create_all
-    ddl.SchemaGenerator, self, checkfirst=checkfirst, tables=tables
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 2010, in _run_visitor
-    with self._optional_conn_ctx_manager(connection) as conn:
-  File "/usr/lib/python2.7/contextlib.py", line 17, in __enter__
-    return self.gen.next()
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 2002, in _optional_conn_ctx_manager
-    with self.contextual_connect() as conn:
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 2192, in contextual_connect
-    self._wrap_pool_connect(self.pool.connect, None),
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 2232, in _wrap_pool_connect
-    e, dialect, self
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 1528, in _handle_dbapi_exception_noconnection
-    util.raise_from_cause(sqlalchemy_exception, exc_info)
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/util/compat.py", line 296, in raise_from_cause
-    reraise(type(exception), exception, tb=exc_tb, cause=cause)
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/base.py", line 2228, in _wrap_pool_connect
-    return fn()
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/pool.py", line 425, in connect
-    return _ConnectionFairy._checkout(self)
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/pool.py", line 822, in _checkout
-    fairy = _ConnectionRecord.checkout(pool)
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/pool.py", line 554, in checkout
-    rec = pool._do_get()
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/pool.py", line 1346, in _do_get
-    return self._create_connection()
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/pool.py", line 370, in _create_connection
-    return _ConnectionRecord(self)
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/pool.py", line 499, in __init__
-    self.__connect(first_connect_check=True)
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/pool.py", line 701, in __connect
-    connection = pool._invoke_creator(self)
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/strategies.py", line 114, in connect
-    return dialect.connect(*cargs, **cparams)
-  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/default.py", line 437, in connect
-    return self.dbapi.connect(*cargs, **cparams)
-OperationalError: (sqlite3.OperationalError) unable to open database file (Background on this error at: http://sqlalche.me/e/e3q8)
-
-[2019-Mar-03 21:46] 176.99.175.200 GET https /ar/? 302 FOUND
-[2019-Mar-03 21:46] 176.99.175.200 GET https /ar/login?next=%2Far%2F 200 OK
-[2019-Mar-03 21:46] 176.99.175.200 GET https /ar/register? 200 OK
-[2019-Mar-03 21:47] 176.99.175.200 POST https /ar/register? 5xx INTERNAL SERVER ERROR
-Traceback (most recent call last):
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1813, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1799, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/var/apps/xnoobs/app/ar_server/views.py", line 98, in register
-    print(e.__traceback__)
-AttributeError: 'OperationalError' object has no attribute '__traceback__'
-
-[2019-Mar-03 21:48] 176.99.175.200 GET https /ar/? 302 FOUND
-[2019-Mar-03 21:48] 176.99.175.200 GET https /ar/login?next=%2Far%2F 200 OK
-[2019-Mar-03 21:48] 176.99.175.200 GET https /ar/register? 200 OK
-[2019-Mar-03 21:48] 176.99.175.200 POST https /ar/register? 5xx INTERNAL SERVER ERROR
-Traceback (most recent call last):
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1813, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1799, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/var/apps/xnoobs/app/ar_server/views.py", line 100, in register
-    return abort(401)
-  File "/usr/local/lib/python2.7/dist-packages/werkzeug/exceptions.py", line 707, in abort
-    return _aborter(status, *args, **kwargs)
-  File "/usr/local/lib/python2.7/dist-packages/werkzeug/exceptions.py", line 687, in __call__
-    raise self.mapping[code](*args, **kwargs)
-Unauthorized: 401 Unauthorized: The server could not verify that you are authorized to access the URL requested.  You either supplied the wrong credentials (e.g. a bad password), or your browser doesn't understand how to supply the credentials required.
-
-[2019-Mar-03 21:49] 176.99.175.200 GET https /ar/? 302 FOUND
-[2019-Mar-03 21:49] 176.99.175.200 GET https /ar/login?next=%2Far%2F 200 OK
-[2019-Mar-03 21:49] 176.99.175.200 POST https /ar/login? 5xx INTERNAL SERVER ERROR
-Traceback (most recent call last):
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1813, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1799, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/var/apps/xnoobs/app/ar_server/views.py", line 70, in login
-    return abort(401)
-  File "/usr/local/lib/python2.7/dist-packages/werkzeug/exceptions.py", line 707, in abort
-    return _aborter(status, *args, **kwargs)
-  File "/usr/local/lib/python2.7/dist-packages/werkzeug/exceptions.py", line 687, in __call__
-    raise self.mapping[code](*args, **kwargs)
-Unauthorized: 401 Unauthorized: The server could not verify that you are authorized to access the URL requested.  You either supplied the wrong credentials (e.g. a bad password), or your browser doesn't understand how to supply the credentials required.
-
-[2019-Mar-03 21:49] 176.99.175.200 GET https /ar/login?next=%2Far%2F 200 OK
-[2019-Mar-03 21:49] 176.99.175.200 POST https /ar/login? 200 OK
-[2019-Mar-03 21:49] 176.99.175.200 POST https /ar/login? 200 OK
-[2019-Mar-03 21:51] 176.99.175.200 POST https /ar/login? 200 OK
-[2019-Mar-03 21:55] 176.99.175.200 GET https /ar/? 302 FOUND
-[2019-Mar-03 21:55] 176.99.175.200 GET https /ar/login?next=%2Far%2F 200 OK
-[2019-Mar-03 21:55] 176.99.175.200 GET https /ar/register? 200 OK
-[2019-Mar-03 21:56] 176.99.175.200 GET https /ar/login? 200 OK
-[2019-Mar-03 21:57] 176.99.175.200 POST https /ar/login? 200 OK
-[2019-Mar-03 21:57] 176.99.175.200 GET https /ar/register? 200 OK
-[2019-Mar-03 21:58] 176.99.175.200 POST https /ar/register? 200 OK
-[2019-Mar-03 21:58] 176.99.175.200 POST https /ar/register? 5xx INTERNAL SERVER ERROR
-Traceback (most recent call last):
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1813, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1799, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/var/apps/xnoobs/app/ar_server/views.py", line 100, in register
-    return abort(401)
-  File "/usr/local/lib/python2.7/dist-packages/werkzeug/exceptions.py", line 707, in abort
-    return _aborter(status, *args, **kwargs)
-  File "/usr/local/lib/python2.7/dist-packages/werkzeug/exceptions.py", line 687, in __call__
-    raise self.mapping[code](*args, **kwargs)
-Unauthorized: 401 Unauthorized: The server could not verify that you are authorized to access the URL requested.  You either supplied the wrong credentials (e.g. a bad password), or your browser doesn't understand how to supply the credentials required.
-
-[2019-Mar-03 21:58] 176.99.175.200 GET https /ar/register? 200 OK
-[2019-Mar-03 21:58] 176.99.175.200 POST https /ar/register? 5xx INTERNAL SERVER ERROR
-Traceback (most recent call last):
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1813, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1799, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/var/apps/xnoobs/app/ar_server/views.py", line 100, in register
-    return abort(401)
-  File "/usr/local/lib/python2.7/dist-packages/werkzeug/exceptions.py", line 707, in abort
-    return _aborter(status, *args, **kwargs)
-  File "/usr/local/lib/python2.7/dist-packages/werkzeug/exceptions.py", line 687, in __call__
-    raise self.mapping[code](*args, **kwargs)
-Unauthorized: 401 Unauthorized: The server could not verify that you are authorized to access the URL requested.  You either supplied the wrong credentials (e.g. a bad password), or your browser doesn't understand how to supply the credentials required.
-
-[2019-Mar-03 22:05] 176.99.175.200 GET https /ar/? 302 FOUND
-[2019-Mar-03 22:05] 176.99.175.200 GET https /ar/login?next=%2Far%2F 200 OK
-[2019-Mar-03 22:05] 176.99.175.200 POST https /ar/login? 200 OK
-[2019-Mar-03 22:06] 176.99.175.200 POST https /ar/login? 200 OK
-[2019-Mar-04 10:33] 176.59.53.234 GET https /ar/? 302 FOUND
-[2019-Mar-04 10:33] 176.59.53.234 GET https /ar/login?next=%2Far%2F 200 OK
+[2019-Mar-07 21:12] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:12] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:12] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:12] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:12] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:12] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:12] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:12] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:12] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:12] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:12] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:12] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:12] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:12] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:12] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:12] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:12] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:12] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:12] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:12] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:12] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:12] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:12] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:12] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:12] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:12] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:12] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:12] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:12] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:12] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:12] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:12] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
+[2019-Mar-07 21:13] 192.168.43.238 GET http /ar/status/5? 200 OK
