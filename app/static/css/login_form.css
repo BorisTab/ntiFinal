@@ -9,14 +9,17 @@
     display:flex;
     justify-content: center;
     align-items: center;
+    background-color: #230029;
 }
 .form{
+    position: absolute;
     width: 300px;
     padding: 32px;
     border-radius:15px;
     box-shadow: 0 5px 16px #ccc;
     font-family: sans-serif;
     letter-spacing:1px;
+    background-color: #fff;
 }
 .form-input,
 .form-button{
