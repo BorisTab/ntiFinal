@@ -10,6 +10,7 @@ from time import strftime
 from logging.handlers import RotatingFileHandler
 
 from flask import abort
+from flask import session
 from flask import jsonify
 from flask import url_for
 from flask import request
@@ -66,6 +67,7 @@ def login():
             user.authenticated = True
             login_user(user)
 
+            session.permanent = True
             db.session.commit()
             return '200'
 
@@ -89,6 +91,7 @@ def login():
                     user.authenticated = True
                     login_user(user)
 
+                    session.permanent = True
                     db.session.commit()
                     return redirect(url_for('ar.main', _id=user.id))
                 else:
@@ -111,6 +114,7 @@ def register():
         db.session.commit()
 
         login_user(new_user)
+        session.permanent = True
         return '200'
 
     register_form = RegistrationForm(request.form)
@@ -134,6 +138,7 @@ def register():
 
                 login_user(new_user)
 
+                session.permanent = True
                 return redirect(url_for('ar.main', _id=new_user.id))
             except Exception as exception:
                 print(exception.args)
