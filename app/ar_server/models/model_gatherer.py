@@ -10,9 +10,10 @@ from os import getcwd
 
 class ModelGatherer:
     @staticmethod
-    def get_model(max_latitude, max_longitude, min_latitide, min_longitude):
-        url = 'https://www.openstreetmap.org/api/0.6/map?bbox=' + str(min_longitude) + \
-              ',' + str(min_latitide) + \
+    def get_model(max_latitude, max_longitude, min_latitude, min_longitude):
+        url = 'https://www.openstreetmap.org/api/0.6/map?bbox=' \
+                  + str(min_longitude) + \
+              ',' + str(min_latitude) + \
               ',' + str(max_longitude) + \
               ',' + str(max_latitude)
 

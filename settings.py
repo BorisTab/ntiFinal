@@ -3,6 +3,8 @@ from os import pardir
 from os import getcwd
 from os import environ
 
+from datetime import timedelta
+
 from pathlib import Path
 
 
@@ -15,6 +17,7 @@ class Config(object):
     PROJECT_ROOT = path.abspath(path.join(APP_DIR, pardir))
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_DATABASE_URI = 'sqlite:///' + Path(getcwd() + '/app/data/users.db').as_posix()
+    PERMANENT_SESSION_LIFETIME = timedelta(minutes=60)
     TESTING = False
 
 
