@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from flask import Flask
 
-from settings import DevConfig
+from app.settings import DevConfig
 
 from app.extensions import db
 from app.extensions import login_manager

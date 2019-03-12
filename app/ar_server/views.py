@@ -20,14 +20,17 @@ from flask import render_template
 
 from pathlib import Path
 
+import sqlalchemy.exc as sql_exc
+
+from flask_login import login_user
+from flask_login import logout_user
+from flask_login import current_user
+from flask_login import login_required
+
 from app.constants import salt
 
 from app.extensions import db
-from app.extensions import login_user
-from app.extensions import logout_user
-from app.extensions import current_user
 from app.extensions import login_manager
-from app.extensions import login_required
 
 from app.ar_server.models.db_models import Users
 from app.ar_server.models.db_models import MapFile
@@ -95,9 +98,12 @@ def login():
                     db.session.commit()
                     return redirect(url_for('ar.main', _id=user.id))
                 else:
-                    return 'bad password'
+                    return jsonify({
+                        'error': 'Invalid password'
+                    }), 401
             except Exception as exception:
                 print(exception.args)
+                print('106 string')
                 return abort(401)
 
     return render_template('login.html', form=login_form)
@@ -108,13 +114,18 @@ def register():
     if request.json:
         json = request.json
 
-        new_user = Users(json['login'], secure_password(json['password']))
-        new_user.authenticated = True
-        db.session.add(new_user)
-        db.session.commit()
+        try:
+            new_user = Users(json['login'], secure_password(json['password']))
+            new_user.authenticated = True
+            db.session.add(new_user)
+            db.session.commit()
 
-        login_user(new_user)
-        session.permanent = True
+            login_user(new_user)
+            session.permanent = True
+        except sql_exc.IntegrityError:
+            return jsonify({
+                'error': 'User with this login exists'
+            }), 400
         return '200'
 
     register_form = RegistrationForm(request.form)
@@ -140,10 +151,10 @@ def register():
 
                 session.permanent = True
                 return redirect(url_for('ar.main', _id=new_user.id))
-            except Exception as exception:
-                print(exception.args)
-                # ToDo: user exists
-                return abort(401)
+            except sql_exc.IntegrityError:
+                return jsonify({
+                    'error': 'User with this login exists'
+                }), 400
     return render_template('register.html', form=register_form)
 
 
@@ -195,8 +206,13 @@ def main(_id=''):
             with open(mtl_file, 'rb') as file:
                 mtl_file = file.read()
 
-            new_map = MapFile(name, obj_file, mtl_file, thumbnail, _id)
-            db.session.add(new_map)
+            try:
+                new_map = MapFile(name, obj_file, mtl_file, thumbnail, _id)
+                db.session.add(new_map)
+            except sql_exc.IntegrityError:
+                return jsonify({
+                    'error': 'Map with given name is exist'
+                }), 409
 
             user = db.session.query(Users).filter_by(id=_id).first()
             user.send_new = True
