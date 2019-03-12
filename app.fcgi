@@ -24,4 +24,5 @@ if __name__ == '__main__':
     activate_this = '/var/apps/xnoobs/venv/bin/activate_this.py'
     execfile(activate_this, dict(__file__=activate_this))
 
+    print('Starting up')
     WSGIServer(LighttpdCGIRootFix(app)).run()
