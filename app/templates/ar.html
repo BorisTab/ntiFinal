@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../static/css/AddAR.css">
     <link rel="stylesheet" href="../static/css/ar.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://lib.arvancloud.com/ar/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.min.js"></script>
     <script src="../static/js/ar.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCaIGVam3ZbXbjokw5Q1Hmf2wx-0VJ3R_Q&callback=initMap"
             async defer></script>
@@ -98,9 +98,9 @@
         {{ form.left_bottom_lat(type='hidden') }}
         {{ form.left_bottom_lng(type='hidden') }}
         <p>Координаты правого верхнего угла</p>
-        {{ form.right_up() }}
+        <input type="text" name="right_up" id="rightUp" class="rightUp" placeholder="широта;долгота">
         <p>Координаты левого нижнего угла</p>
-        {{ form.left_bottom() }}
+        <input type="text" name="left_bottom" id="leftBottom" placeholder="широта;долгота">
 
         <p>Введите имя</p>
         {{ form.map_name }}
