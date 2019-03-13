@@ -37,14 +37,16 @@ function initMap() {
 }
 // Show the new coordinates for the rectangle in an info window.
 
-function getCoordinate(event) {
+function getCoordinate(e) {
     let ne = rectangle.getBounds().getNorthEast();
     let sw = rectangle.getBounds().getSouthWest();
-
     rightUpLat = ne.lat();
     rightUpLng = ne.lng();
     leftDownLat = sw.lat();
     leftDownLng = sw.lng();
+
+    $('#rightUp').val(rightUpLat.toFixed(3) + ';' + rightUpLng.toFixed(3));
+    $('#leftBottom').val(leftDownLat.toFixed(3) + ';' + leftDownLng.toFixed(3));
 
     let rectangleLength = rightUpLng - leftDownLng;
     let rectangleWidth = rightUpLat - leftDownLat;
@@ -78,7 +80,9 @@ function getCoordinate(event) {
 
 
     if (check) {
-        alert('Превышен максимальный размер области');
+        setTimeout(function () {
+            alert('Превышен максимальный размер области');
+        }, 100);
     }
 }
 
@@ -121,31 +125,72 @@ $('document').ready(function () {
         window.location= '/login';
     });*/
 
-    $.mask.definitions['~']='[+-]';
-    $('#right-up, #left-bottom').mask('~999.99; ~999.99');
+    // $.mask.definitions['~']='[+-]';
+    // $('#rightUp, #leftBottom').mask('~999.99; ~999.99');
+
+    $.validator.addMethod("coordinate",
+        function (val, el, args) {
+        if (args) {
+            let i = 0;
+            let latitude = "";
+            let longitude = "";
+            while (val[i] !== ';') {
+                if (i === val.length) {
+                    return false;
+                }
+                latitude += val[i];
+                i++;
+                console.log(latitude);
+            }
+            i++;
+            while (i < val.length) {
+                longitude += val[i];
+                i++;
+                console.log(longitude, i, val.length);
+            }
+            let latVal = parseFloat(latitude).toFixed(3);
+            let lngVal = parseFloat(longitude).toFixed(3);
+            let latStr = "" + latVal;
+            let lngStr = "" + lngVal;
+            if (latStr !== latitude || lngStr !== longitude) return false;
+            if (latVal >= -180 && latVal <= 180 && lngVal >= -180 && lngVal <= 180) return true;
+            else return false;
+        } else return false;
+        });
+
+    $('.coordinate-send').validate({
+        rules: {
+            right_up: {
+                required: true,
+                coordinate: true,
+            },
+            left_bottom: {
+                required: true,
+                coordinate: true,
+            }
+        },
+        messages:{
+            right_up:{
+                required: "Поле обязательно к заполнению",
+                coordinate: 'Введите координаты в формате: "число;число"'
+            },
+            left_bottom:{
+                required: "Поле обязательно к заполнению",
+                coordinate: 'Введите координаты в формате: "число;число"'
+            }
+        }
+    });
 
     $(".coordinate-send").submit(function() {
-        $('#right-up-lat').val(rightUpLat);
-        $('#right-up-lng').val(rightUpLng);
-        $('#left-bottom-lat').val(leftDownLat);
-        $('#left-bottom-lng').val(leftDownLng);
-
-        let th = $(this);
         $.ajax({
             type: "POST",
             url: "",              //напишешь сюда обработчик
-            data: th.serialize(),
-            success: function() {
-                $('.choose-zone-title').text('Вы может отправить новую зону');
-                alert('Зона отправлена');
-                setTimeout(function() {
-                    th.trigger("reset");
-                }, 100);
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-                alert(xhr.status);
-                alert(thrownError);
+            data: {
+                right_up: $('#rightUp').val(),
+                left_bottom: $('#leftBottom').val()
             }
+        }).done(function () {
+
         });
         return false;
     });
