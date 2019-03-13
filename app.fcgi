@@ -1,8 +1,10 @@
 #!/usr/bin/env python
-import sys
-import logging
+from os import name
+from os import getcwd
 
 from autoapp import app
+
+from pathlib import Path
 from flup.server.fcgi import WSGIServer
 from werkzeug.contrib.fixers import LighttpdCGIRootFix
 
@@ -17,12 +19,20 @@ class ScriptNameStripper(object):
 
 
 app.debug = True
+app.threaded = True
 app = ScriptNameStripper(app)
 
 
 if __name__ == '__main__':
-    activate_this = '/var/apps/xnoobs/venv/bin/activate_this.py'
-    execfile(activate_this, dict(__file__=activate_this))
+    try:
+        if name == 'nt':
+            activate_this = Path(getcwd() + '/venv/bin/activate_this.py').as_posix()
+            execfile(activate_this, dict(__file__=activate_this))
+        else:
+            activate_this = Path(getcwd() + '/venv/Scripts/activate_this.py').as_posix()
+            execfile(activate_this, dict(__file__=activate_this))
+    except NameError as e:
+        print('Start failed')
 
     print('Starting up')
     WSGIServer(LighttpdCGIRootFix(app)).run()

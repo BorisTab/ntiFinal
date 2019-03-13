@@ -116,9 +116,10 @@ class ObjectsCell {
 
 $('document').ready(function () {
 
+    /*
     $('.exit-button').click(function () {
         window.location= '/login';
-    });
+    });*/
 
     $.mask.definitions['~']='[+-]';
     $('#right-up, #left-bottom').mask('~999.99; ~999.99');

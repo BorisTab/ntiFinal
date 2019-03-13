@@ -67,7 +67,7 @@ def login():
 
         user = db.session.query(Users).filter_by(email=json['login']).first()
         if user.password == secure_password(json['password']):
-            user.authenticated = True
+            user.is_authenticated = True
             login_user(user)
 
             session.permanent = True
@@ -91,7 +91,7 @@ def login():
             # ToDo: get id and redirect to /ar/<int:id> after validation
             try:
                 if user.password == password:
-                    user.authenticated = True
+                    user.is_authenticated = True
                     login_user(user)
 
                     session.permanent = True
@@ -116,7 +116,7 @@ def register():
 
         try:
             new_user = Users(json['login'], secure_password(json['password']))
-            new_user.authenticated = True
+            new_user.is_authenticated = True
             db.session.add(new_user)
             db.session.commit()
 
@@ -143,7 +143,7 @@ def register():
         if register_form.validate():
             try:
                 new_user = Users(form_login, secure_password(form_password))
-                new_user.authenticated = True
+                new_user.is_authenticated = True
                 db.session.add(new_user)
                 db.session.commit()
 
@@ -162,7 +162,7 @@ def register():
 @login_required
 def logout():
     user = current_user
-    user.authenticated = False
+    user.is_authenticated = False
     logout_user()
     db.session.commit()
     return redirect(url_for('ar.login'))

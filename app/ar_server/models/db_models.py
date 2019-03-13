@@ -12,7 +12,7 @@ class Users(db.Model):
     send_new = db.Column(db.Boolean, default=False)
     n_last = db.Column(db.Integer, default=0)
     files = db.relationship('MapFile', backref='users')
-    authenticated = db.Column(db.Boolean, default=False)
+    is_authenticated = db.Column(db.Boolean, default=False)
 
     def __init__(self, email, password):
         assert email is not None
@@ -22,7 +22,7 @@ class Users(db.Model):
         self.password = password
 
     def is_authenticated(self):
-        return self.authenticated
+        return self.is_authenticated
 
     def is_active(self):
         return True

@@ -3,7 +3,7 @@
 from flask import Flask
 import sys
 sys.path.insert(0, '..')
-import settings
+from app.settings import DevConfig
 
 from app.extensions import db
 from app.extensions import login_manager
@@ -13,7 +13,7 @@ from app.landing import views as landing_views
 from app.science_art import views as sciart_views
 
 
-def create_app(config_object=settings.DevConfig):
+def create_app(config_object=DevConfig):
     app = Flask(__name__)
     app.config.from_object(config_object)
     register_extensions(app)
