@@ -1058,7 +1058,24 @@ footer
     color: #fff;
 }
 
+.data-table{
+    display: flex;
+    justify-content: center;
+}
 
+.data-time-picker{
+    width: 80%;
+    height: 60%;
+}
+
+.data-time-picker tr:nth-child(1) td{
+    cursor: default;
+}
+
+.data-time-picker td{
+    cursor: pointer;
+    text-align: center;
+}
 
 @media screen and (max-width: 860px)
 {

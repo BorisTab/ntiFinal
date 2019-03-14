@@ -127,4 +127,10 @@ $('document').ready(function () {
                 .end().filter("[href='#"+id+"']").parent().addClass("active-button");
         }
     });
+
+    $('.data-time-picker tr:not(:nth-child(1)) td').click(function () {
+        $('td').css('background-color', '#fff');
+        $(this).css('background-color', '#fcc422').siblings().css('background-color', '#fff');
+        $('.data-input').val($(this).text() + $(this).children().attr('class'));
+    });
 });

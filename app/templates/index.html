@@ -9,7 +9,6 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="../static/js/main.js"></script>
-
     <link rel="shortcut icon" href="../static/images/favicon.ico" type="image/x-icon">
     <title>XNoobs</title>
 </head>
@@ -267,11 +266,7 @@
 
     <div class="forms">
         <form class="form" method="post">
-            {{ form.recipient_name() }}
-            {{ form.recipient_email() }}
-            {{ form.message_text() }}
-            {{ form.button }}
-            <!--<div class="form-group">
+            <div class="form-group">
                 <input type="text" placeholder=" " class="form-input" name="name" id="name" required>
                 <label for="name" class="form-label">Имя</label>
             </div>
@@ -279,11 +274,131 @@
                 <input name="email" type="email" placeholder=" " class="form-input" id="email" required>
                 <label for="email" class="form-label">E-Mail</label>
             </div>
-            <div class="form-group">
-                <textarea name="body" class="form-input" placeholder=" " id="message"></textarea>
-                <label for="message" class="form-label">Сообщение</label>
+            <!--<div class="form-group">-->
+                <!--<textarea name="body" class="form-input" placeholder=" " id="message"></textarea>-->
+                <!--<label for="message" class="form-label">Сообщение</label>-->
+            <!--</div>-->
+            <div class="data-table">
+                <table class="data-time-picker">
+                    <tr>
+                        <td>
+                            <p>ПН</p>
+                        </td>
+                        <td>
+                            <p>ВТ</p>
+                        </td>
+                        <td>
+                            <p>СР</p>
+                        </td>
+                        <td>
+                            <p>ЧТ</p>
+                        </td>
+                        <td>
+                            <p>ПТ</p>
+                        </td>
+                        <td>
+                            <p>СБ</p>
+                        </td>
+                        <td>
+                            <p>ВС</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p class="column-1">4:20</p>
+                        </td>
+                        <td>
+                            <p class="column-2">4:20</p>
+                        </td>
+                        <td>
+                            <p class="column-3">4:20</p>
+                        </td>
+                        <td>
+                            <p class="column-4">4:20</p>
+                        </td>
+                        <td>
+                            <p class="column-5">4:20</p>
+                        </td>
+                        <td>
+                            <p class="column-6">4:20</p>
+                        </td>
+                        <td>
+                            <p class="column-7">4:20</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p class="column-1">4:20</p>
+                        </td>
+                        <td>
+                            <p class="column-2">4:20</p>
+                        </td>
+                        <td>
+                            <p class="column-3">4:20</p>
+                        </td>
+                        <td>
+                            <p class="column-4">4:20</p>
+                        </td>
+                        <td>
+                            <p class="column-5">4:20</p>
+                        </td>
+                        <td>
+                            <p class="column-6">4:20</p>
+                        </td>
+                        <td>
+                            <p class="column-7">4:20</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p class="column-1">4:20</p>
+                        </td>
+                        <td>
+                            <p class="column-2">4:20</p>
+                        </td>
+                        <td>
+                            <p class="column-3">4:20</p>
+                        </td>
+                        <td>
+                            <p class="column-4">4:20</p>
+                        </td>
+                        <td>
+                            <p class="column-5">4:20</p>
+                        </td>
+                        <td>
+                            <p class="column-6">4:20</p>
+                        </td>
+                        <td>
+                            <p class="column-7">4:20</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p class="column-1">4:20</p>
+                        </td>
+                        <td>
+                            <p class="column-2">4:20</p>
+                        </td>
+                        <td>
+                            <p class="column-3">4:20</p>
+                        </td>
+                        <td>
+                            <p class="column-4">4:20</p>
+                        </td>
+                        <td>
+                            <p class="column-5">4:20</p>
+                        </td>
+                        <td>
+                            <p class="column-6">4:20</p>
+                        </td>
+                        <td>
+                            <p class="column-7">4:20</p>
+                        </td>
+                    </tr>
+                </table>
             </div>
-            <button class="form-button">Отправить</button> -->
+            <input type="hidden" class="data-input">
+            <button class="form-button">Отправить</button>
         </form>
     </div>
 </section>
