@@ -131,21 +131,22 @@ $('document').ready(function () {
     $('.data-time-picker tr:not(:nth-child(1)) td').click(function () {
         $('td').css('background-color', '#fff');
         $(this).css('background-color', '#fcc422').siblings().css('background-color', '#fff');
-        $('.data-input').val($(this).text() + $(this).children().attr('class'));
+        $('.data-input').val($(this).children().html() + ' ' + $(this).children().attr('class'));
     });
 
     $.ajax({
 			type : 'POST',
 			url : ''
 		})
-		.done(function(data) {
+	.done(function(data) {
 
-			if (data.error) {
-				alert(data.error);
-			}
-			else {
-				alert('sosi');
-			}
-
-		});
+	    if (data.error) {
+	        alert(data.error);
+	    } else {
+	        alert('sosi');
+	        let getObj = $.parseJSON(data.error);
+	    }
+	});
+    // for (let )
+    // $('.data-time-picker ' + )
 });
