@@ -9,7 +9,6 @@ from os import getcwd
 from time import strftime
 from logging.handlers import RotatingFileHandler
 
-from flask import abort
 from flask import session
 from flask import jsonify
 from flask import url_for
@@ -27,16 +26,22 @@ from flask_login import logout_user
 from flask_login import current_user
 from flask_login import login_required
 
+from flask_admin.contrib.sqla import ModelView
+
 from app.constants import salt
 
 from app.extensions import db
+
+from app.extensions import admin
 from app.extensions import login_manager
 
-from app.ar_server.models.db_models import Users
+from app.ar_server.models.db_models import User
+from app.ar_server.models.db_models import Quest
 from app.ar_server.models.db_models import MapFile
 
 from app.ar_server.models.file_waiter import FileWaiter
 from app.ar_server.models.model_gatherer import ModelGatherer
+
 
 from app.ar_server.models.forms.login_form import LoginForm
 from app.ar_server.models.forms.map_creation_form import MapCreationForm
@@ -58,6 +63,24 @@ logger.addHandler(handler)
 
 blueprint = Blueprint('ar', 'ar')
 login_manager.login_view = '/ar/login'
+admin.add_view(ModelView(Quest, db.session))
+
+
+@blueprint.route('/quests', methods=['GET'])
+def get_quests():
+    all_quests = db.session.query(Quest).all()
+
+    quests_response = []
+    for i in range(len(all_quests)):
+        quests_response.append({
+            'id': all_quests[i].id,
+            'name': all_quests[i].name,
+            # ToDo: put code to Quest class
+            'code': hashlib.md5(str(i).encode('utf-8')).hexdigest()[:8],
+            'description': all_quests[i].description,
+            'thumbnailUrl': all_quests[i].thumbnailUrl
+        })
+    return jsonify(quests_response)
 
 
 @blueprint.route('/login', methods=['GET', 'POST'])
@@ -65,14 +88,17 @@ def login():
     if request.json:
         json = request.json
 
-        user = db.session.query(Users).filter_by(email=json['login']).first()
-        if user.password == secure_password(json['password']):
-            user.is_authenticated = True
-            login_user(user)
+        user = db.session.query(User).filter_by(email=json['login']).first()
+        try:
+            if user.password == secure_password(json['password']):
+                user.is_authenticated = True
+                login_user(user)
 
-            session.permanent = True
-            db.session.commit()
-            return '200'
+                session.permanent = True
+                db.session.commit()
+                return '200'
+        except AttributeError:
+            return jsonify({'error': 'User with this login doesn\'t exist'})
 
     login_form = LoginForm(request.form)
 
@@ -86,7 +112,7 @@ def login():
 
         # ToDo: add frontend validation
         if login_form.validate():
-            user = db.session.query(Users).filter_by(email=_login).first()
+            user = db.session.query(User).filter_by(email=_login).first()
 
             # ToDo: get id and redirect to /ar/<int:id> after validation
             try:
@@ -101,12 +127,16 @@ def login():
                     return jsonify({
                         'error': 'Invalid password'
                     }), 401
-            except Exception as exception:
-                print(exception.args)
-                print('106 string')
-                return abort(401)
+            except AttributeError:
+                return jsonify({'error': 'Invalid login'})
 
     return render_template('login.html', form=login_form)
+
+
+@blueprint.route('/quest/register', methods=['GET', 'POST'])
+def register_to_quest():
+    if request.form:
+        pass
 
 
 @blueprint.route('/register', methods=['GET', 'POST'])
@@ -115,7 +145,7 @@ def register():
         json = request.json
 
         try:
-            new_user = Users(json['login'], secure_password(json['password']))
+            new_user = User(json['login'], secure_password(json['password']))
             new_user.is_authenticated = True
             db.session.add(new_user)
             db.session.commit()
@@ -142,7 +172,7 @@ def register():
         # Stepic, vk ... uses same pattern
         if register_form.validate():
             try:
-                new_user = Users(form_login, secure_password(form_password))
+                new_user = User(form_login, secure_password(form_password))
                 new_user.is_authenticated = True
                 db.session.add(new_user)
                 db.session.commit()
@@ -170,7 +200,7 @@ def logout():
 
 @login_manager.user_loader
 def load_user(_login):
-    return Users.query.filter_by(email=_login).first()
+    return User.query.filter_by(email=_login).first()
 
 
 @blueprint.route('/<int:_id>', methods=['GET', 'POST'])
@@ -214,7 +244,7 @@ def main(_id=''):
                     'error': 'Map with given name is exist'
                 }), 409
 
-            user = db.session.query(Users).filter_by(id=_id).first()
+            user = db.session.query(User).filter_by(id=_id).first()
             user.send_new = True
             user.n_last += 1
             db.session.commit()
@@ -229,7 +259,7 @@ def main(_id=''):
 
 @blueprint.route('/status/<int:_id>', methods=['GET'])
 def status(_id):
-    user = db.session.query(Users).filter_by(id=_id).first()
+    user = db.session.query(User).filter_by(id=_id).first()
 
     map_files = []
     rows = db.session.query(MapFile).order_by(MapFile.id.desc()).limit(user.n_last).all()
@@ -238,7 +268,7 @@ def status(_id):
         map_files.append([
             str(rows[i].obj_file, 'utf-8'),
             str(rows[i].textures, 'utf-8'),
-            str(rows[i].thumbnail)  # ToDo: check this code from Unity
+            str(rows[i].thumbnail)
             # base64.b64encode()
         ])
 
@@ -293,10 +323,11 @@ def generate_file_path(name):
     return Path(getcwd() + '/app/ar_server/' + name).as_posix()
 
 
-########################
-#        DANGER        #
-#     DEBUG USE ONLY   #
-########################
+###########################
+#         DANGER          #
+#      DEBUG USE ONLY     #
+# NEVER USE IN PRODUCTION #
+###########################
 
 
 @blueprint.route('/create')

@@ -267,7 +267,11 @@
 
     <div class="forms">
         <form class="form" method="post">
-            <div class="form-group">
+            {{ form.recipient_name() }}
+            {{ form.recipient_email() }}
+            {{ form.message_text() }}
+            {{ form.button }}
+            <!--<div class="form-group">
                 <input type="text" placeholder=" " class="form-input" name="name" id="name" required>
                 <label for="name" class="form-label">Имя</label>
             </div>
@@ -279,7 +283,7 @@
                 <textarea name="body" class="form-input" placeholder=" " id="message"></textarea>
                 <label for="message" class="form-label">Сообщение</label>
             </div>
-            <button class="form-button">Отправить</button>
+            <button class="form-button">Отправить</button> -->
         </form>
     </div>
 </section>

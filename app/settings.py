@@ -21,6 +21,14 @@ class Config(object):
     PERMANENT_SESSION_LIFETIME = timedelta(minutes=60)
     TESTING = False
 
+    # SMTP server config
+    MAIL_SERVER = 'smtp.gmail.com'
+    MAIL_PORT = 465
+    MAIL_USE_TLS = False
+    MAIL_USE_SSL = True
+    MAIL_USERNAME = 'mail@xnoobs.ru'
+    MAIL_PASSWORD = '/dev/null'
+
 
 class ProductionConfig(Config):
     """

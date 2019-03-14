@@ -1,11 +1,14 @@
 # -*- coding: utf-8 -*-
-#!/usr/bin/env python
-from flask import Flask
 import sys
 sys.path.insert(0, '..')
+
+from flask import Flask
+
 from app.settings import DevConfig
 
 from app.extensions import db
+from app.extensions import mail
+from app.extensions import admin
 from app.extensions import login_manager
 
 from app.ar_server import views as ar_views
@@ -25,6 +28,8 @@ def create_app(config_object=DevConfig):
 
 def register_extensions(app):
     db.init_app(app)
+    mail.init_app(app)
+    admin.init_app(app)
     login_manager.init_app(app)
 
 

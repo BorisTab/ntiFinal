@@ -2,8 +2,29 @@
 from app.extensions import db
 
 
+class Team(db.Model):
+    __tablename__ = 'teams'
+
+    name = db.Column(db.String, unique=True, primary_key=True)
+    date_start = db.Column(db.DateTime)
+    required_time = db.Column(db.Time)
+    email = db.Column(db.String, unique=True)
+
+
+class Quest(db.Model):
+    __tablename__ = 'operations'
+
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    name = db.Column(db.String, unique=True)
+    description = db.Column(db.String)
+    code = db.Column(db.String)
+
+    # Use camelCase to friend Retrofit, SQLAlchemy and Glide
+    thumbnailUrl = db.Column(db.String)
+
+
 # ToDo: Add UserMixin
-class Users(db.Model):
+class User(db.Model):
     __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
