@@ -1077,6 +1077,10 @@ footer
     text-align: center;
 }
 
+.data-input {
+    display: none;
+}
+
 @media screen and (max-width: 860px)
 {
     .menu

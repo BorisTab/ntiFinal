@@ -132,6 +132,7 @@ $('document').ready(function () {
         $('td').css('background-color', '#fff');
         $(this).css('background-color', '#fcc422').siblings().css('background-color', '#fff');
         $('.data-input').val($(this).text() + $(this).children().attr('class'));
+        // alert($('.data-input').val());
     });
 
     $.ajax({

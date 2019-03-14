@@ -133,12 +133,6 @@ def login():
     return render_template('login.html', form=login_form)
 
 
-@blueprint.route('/quest/register', methods=['GET', 'POST'])
-def register_to_quest():
-    if request.form:
-        pass
-
-
 @blueprint.route('/register', methods=['GET', 'POST'])
 def register():
     if request.json:

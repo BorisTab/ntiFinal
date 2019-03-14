@@ -6,8 +6,7 @@ class Team(db.Model):
     __tablename__ = 'teams'
 
     name = db.Column(db.String, unique=True, primary_key=True)
-    date_start = db.Column(db.DateTime)
-    required_time = db.Column(db.Time)
+    date_start = db.Column(db.String)
     email = db.Column(db.String, unique=True)
 
 
