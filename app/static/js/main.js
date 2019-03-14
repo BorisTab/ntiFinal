@@ -133,4 +133,19 @@ $('document').ready(function () {
         $(this).css('background-color', '#fcc422').siblings().css('background-color', '#fff');
         $('.data-input').val($(this).text() + $(this).children().attr('class'));
     });
+
+    $.ajax({
+			type : 'POST',
+			url : ''
+		})
+		.done(function(data) {
+
+			if (data.error) {
+				alert(data.error);
+			}
+			else {
+				alert('sosi');
+			}
+
+		});
 });
