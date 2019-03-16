@@ -97,20 +97,12 @@ $('document').ready(function () {
             type: "POST",
             url: "",
             data: th.serialize()
-        }).done(function() {
-            alert("Спасибо!");
-            setTimeout(function() {
-                th.trigger("reset");
-            }, 1000);
+        }).done(function(data) {
+            if (data) {
+                $('.qr-code').css('display', 'flex');
+            }
         });
         return false;
-    });
-
-    $('.rus, .vertical-menu-rus').click(function () {
-        window.location = '/';
-    });
-    $('.eng, .vertical-menu-eng').click(function () {
-        window.location = '/en';
     });
 
     $('#section-2 .column').mouseover(function () {

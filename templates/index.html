@@ -43,14 +43,6 @@
             </li>
         </ul>
 
-        <div class="language-change">
-            <button class="rus selected-language">
-                rus
-            </button>
-            <button onclick="{{ url_for('landing.index_eng') }}" class="eng unselected-language">
-                eng
-            </button>
-        </div>
     </div>
 
     <div class="mobile-button" onclick="menu(this); show();">
@@ -64,16 +56,11 @@
     <button class="vertical-menu-portfolio">Портфолио</button>
     <button class="vertical-menu-about">О нас</button>
     <button class="vertical-menu-contact">Контакты</button>
-    <div class="language-vertical">
-        <button class="vertical-menu-rus" >rus</button>
-        <button class="vertical-menu-eng">eng</button>
-    </div>
 </div>
 
 <section id="section-1">
     <img src="../static/images/logo.png" alt="" class="logo"/>
-    <p class="slogan">Супер слоган</p>
-    <!--<img src="../static/images/arrow-down.png" alt="" class="arrow-down"/>-->
+    <p class="slogan">По названию видно — команда сильная</p>
     <div class="arrow-down">
         <div class="indicator">
             <span></span>
@@ -87,10 +74,10 @@
         <div class="content">
             <h1>1</h1>
             <div class="box">
-                <h2>Проект 1</h2>
-                <p>Очень длинное краткое описание проекта. Очень длинное краткое описание проекта.
-                    Очень длинное краткое описание проекта. Очень длинное краткое описание проекта.
-                    Очень длинное краткое описание проекта. Очень длинное краткое описание проекта.</p>
+                <h2>Усадьбы Иркутска</h2>
+                <p>Настоящие произведения деревянного зодчества XIX века,
+                    с дивными резными узорами на фасадах. Неспешные прогулки по аллеям цветущего сибирского сада.
+                    Чаепитие в кружевной беседке. Разговоры под чарующие звуки старинного фортепиано.</p>
             </div>
         </div>
         <div class="portfolio-bg portfolio-bg1"></div>
@@ -100,10 +87,8 @@
         <div class="content">
             <h1>2</h1>
             <div class="box">
-                <h2>Проект 2</h2>
-                <p>Очень длинное краткое описание проекта. Очень длинное краткое описание проекта.
-                    Очень длинное краткое описание проекта. Очень длинное краткое описание проекта.
-                    Очень длинное краткое описание проекта. Очень длинное краткое описание проекта.</p>
+                <h2>Вау</h2>
+                <p>Вы можете почувствовать себя частью элиты сибирского города прошлых столетий, приняв участие в нашем квесте. Он не только покажет вам исторический центр, но и заинтерисует вас его изучить </p>
             </div>
         </div>
         <div class="portfolio-bg portfolio-bg2"></div>
@@ -113,10 +98,8 @@
         <div class="content">
             <h1>3</h1>
             <div class="box">
-                <h2>Проект 3</h2>
-                <p>Очень длинное краткое описание проекта. Очень длинное краткое описание проекта.
-                    Очень длинное краткое описание проекта. Очень длинное краткое описание проекта.
-                    Очень длинное краткое описание проекта. Очень длинное краткое описание проекта.</p>
+                <h2>Подробности</h2>
+                <p>Наш квест проведет вас по старинным усадьбам Иркутска, не давая вам продохнуть и заставляя находить отгадки на сложные вопросы. Вопросы будут сопровождаться AR технологиями, которые дадут вам возможность посмотреть на усадьбы в первоночальном облике </p>
             </div>
         </div>
         <div class="portfolio-bg portfolio-bg3"></div>
@@ -126,10 +109,8 @@
         <div class="content">
             <h1>4</h1>
             <div class="box">
-                <h2>Проект 4</h2>
-                <p>Очень длинное краткое описание проекта. Очень длинное краткое описание проекта.
-                    Очень длинное краткое описание проекта. Очень длинное краткое описание проекта.
-                    Очень длинное краткое описание проекта. Очень длинное краткое описание проекта.</p>
+                <h2>AR</h2>
+                <p>Далее на сайте Вы можее зарегистрироваться на квест, и скачать мобильное приложение для доступа к AR. Новый формат и нестандартные задачи подарят вам массу удоводьствия</p>
             </div>
         </div>
         <div class="portfolio-bg portfolio-bg4"></div>
@@ -225,24 +206,28 @@
 </section>
 <section id="section-5">
     <div class="title">
-        <h1>Хотите связаться с нами?</h1>
+        <h1>Зарегистрируйся на квест</h1>
         <div></div>
-        <h2>Напишите нам</h2>
+        <h2>Получи удовольствие</h2>
     </div>
 
     <div class="forms">
         <form class="form" method="post">
             <div class="form-group">
                 <input type="text" placeholder=" " class="form-input" name="name" id="name" required>
-                <label for="name" class="form-label">Имя</label>
+                <label for="name" class="form-label">Название команды</label>
             </div>
             <div class="form-group">
                 <input name="email" type="email" placeholder=" " class="form-input" id="email" required>
-                <label for="email" class="form-label">E-Mail</label>
+                <label for="email" class="form-label">e-mail</label>
             </div>
             <input type="hidden" class="data-input">
             <button class="form-button">Отправить</button>
         </form>
+    </div>
+    <div class="qr-code">
+        <img src="http://api.qrserver.com/v1/create-qr-code/?color=000000&amp;bgcolor=FFFFFF&amp;data=https%3A%2F%2Fxnoobs.ru%2Fapp%2Fdownload&amp;qzone=1&amp;margin=0&amp;size=400x400&amp;ecc=L" alt="qr code" />
+        <a href="../app/download">Ссылка на скачивание</a>
     </div>
 </section>
 <div class="section-4"></div>
@@ -251,45 +236,56 @@
         <div class="screen">
             <div class="card">
                 <div class="img-box"><img src="../static/images/MK.jpg" alt=""></div>
-                <h2>Максим Коклюшкин</h2>
+                <h2>Максим Кокряшкин</h2>
             </div>
             <div class="person-info">
                 <div class="img-box"><img src="../static/images/MK.jpg" alt=""></div>
-                <h2>Максим Коклюшкин</h2>
-                <p>
-                    Python.<br>
-                    Может ушатать вас стулом.
-                </p>
+                <div class="about-admin">
+                    <h1>Максим Кокряшкин</h1>
+                    <div class="languages">C# Python bash</div>
+                    <div class="persanality-info">Умеет закрывать Vim <br> Администрирует UNIX-подобные системы</div>
+                    <br>
+                    <div class="number-admin">8 (985) 951-73-58</div>
+                    <br>
+                    <div class="email-admin">max.kokryashkin@gmail.com</div>
+                </div>
             </div>
         </div>
 
         <div class="screen">
             <div class="card">
                 <div class="img-box"><img src="../static/images/MS.jpg" alt=""></div>
-                <h2>Матам Скуфукс</h2>
+                <h2>Матвей Скуфин</h2>
             </div>
             <div class="person-info">
                 <div class="img-box"><img src="../static/images/MS.jpg" alt=""></div>
-                <h2>Матам Скуфукс</h2>
-                <p>
-                    Python, C#.<br>
-                    Тупа машина.
-                </p>
+                <div class="about-admin">
+                    <h1>Матвей Скуфин</h1>
+                    <div class="languages">C# Python Java</div>
+                    <div class="persanality-info">Android-developer<br>Backend-developer<br> Человек-вритуальная машина</div>
+                    <br>
+                    <div class="number-admin">8 (977) 521-19-12</div>
+                    <br>
+                    <div class="email-admin">matviei.skufin@gmail.com</div>
+                </div>
             </div>
         </div>
-
-
         <div class="screen">
             <div class="card">
                 <div class="img-box"><img src="../static/images/DI.jpg" alt=""></div>
-                <h2>Димитрий Иванцов</h2>
+                <h2>Дмитрий Иванцов</h2>
             </div>
             <div class="person-info">
                 <div class="img-box"><img src="../static/images/DI.jpg" alt=""></div>
-                <h2>Димитрий Иванцов</h2>
-                <p>
-                    Дима, спасибо, что ты есть.
-                </p>
+                <div class="about-admin">
+                    <h1>Дмитрий Иванцов</h1>
+                    <div class="languages">Java</div>
+                    <div class="persanality-info">3d-моделист<br>Spring-developer</div>
+                    <br>
+                    <div class="number-admin">8 (903) 778-88-99</div>
+                    <br>
+                    <div class="email-admin">dim22xxx@gmail.com</div>
+                </div>
             </div>
         </div>
 
@@ -297,14 +293,19 @@
         <div class="screen">
             <div class="card">
                 <div class="img-box"><img src="../static/images/TK.jpg" alt=""></div>
-                <h2>Тимофей Конюх</h2>
+                <h2>Тимофей Конев</h2>
             </div>
             <div class="person-info">
                 <div class="img-box"><img src="../static/images/TK.jpg" alt=""></div>
-                <h2>Тимофей Конюх</h2>
-                <p>
-                    Старая web-макака
-                </p>
+                <div class="about-admin">
+                    <h1>Тимофей Конев</h1>
+                    <div class="languages">JavaScript ReactJS Node.js</div>
+                    <div class="persanality-info">fullstack-developer</div>
+                    <br>
+                    <div class="number-admin">8 (963) 662-77-27</div>
+                    <br>
+                    <div class="email-admin">1910tim@mail.ru</div>
+                </div>
             </div>
         </div>
 
@@ -312,14 +313,19 @@
         <div class="screen">
             <div class="card">
                 <div class="img-box"><img src="../static/images/BT.jpg" alt=""></div>
-                <h2>Борибз Табачников</h2>
+                <h2>Бориc Табачников</h2>
             </div>
             <div class="person-info">
                 <div class="img-box"><img src="../static/images/BT.jpg" alt=""></div>
-                <h2>Борибз Табачников</h2>
-                <p>
-                    Молодая и перспективная web-макака
-                </p>
+                <div class="about-admin">
+                    <h1>Борис Табачников</h1>
+                    <div class="languages">JavaScript Sass Gulp</div>
+                    <div class="persanality-info">frontend-developer</div>
+                    <br>
+                    <div class="number-admin">8 (985) 992-45-59</div>
+                    <br>
+                    <div class="email-admin">boristab23@gmail.com</div>
+                </div>
             </div>
         </div>
     </div>
@@ -333,36 +339,51 @@
         </div>
         <div class="tab_content">
             <div class="tab_item">
-                <h2>Максим Коклюшкин</h2>
-                <p>
-                    Python.<br>
-                    Может ушатать вас стулом.
-                </p>
+                <h1>Максим Кокряшкин</h1>
+                <div class="languages">C# Python bash</div>
+                <div class="persanality-info">Умеет закрывать Vim <br> Администрирует UNIX-подобные системы</div>
+                <br>
+                <div class="number-admin">8 (985) 951-73-58</div>
+                <br>
+                <div class="email-admin">max.kokryashkin@gmail.com</div>
             </div>
             <div class="tab_item">
-                <h2>Матам Скуфукс</h2>
-                <p>
-                    Python, C#.<br>
-                    Тупа машина.
-                </p>
+                <h1>Матвей Скуфин</h1>
+                <div class="languages">C# Python Java</div>
+                <div class="persanality-info">Android-developer<br>Backend-developer<br> Человек-вритуальная машина</div>
+                <br>
+                <div class="number-admin">8 (977) 521-19-12</div>
+                <br>
+                <div class="email-admin">matviei.skufin@gmail.com</div>
             </div>
             <div class="tab_item">
-                <h2>Димитрий Иванцов</h2>
-                <p>
-                    Дима, спасибо, что ты есть.
-                </p>
+                <h1>Дмитрий Иванцов</h1>
+                <div class="languages">Java</div>
+                <div class="persanality-info">3d-моделист<br>Spring-developer</div>
+                <br>
+                <div class="number-admin">8 (903) 778-88-99</div>
+                <br>
+                <div class="email-admin">dim22xxx@gmail.com</div>
             </div>
             <div class="tab_item">
-                <h2>Тимофей Конюх</h2>
-                <p>
-                    Старая web-макака
-                </p>
+                <div class="about-admin">
+                    <h1>Тимофей Конев</h1>
+                    <div class="languages">JavaScript ReactJS Node.js</div>
+                    <div class="persanality-info">fullstack-developer</div>
+                    <br>
+                    <div class="number-admin">8 (963) 662-77-27</div>
+                    <br>
+                    <div class="email-admin">1910tim@mail.ru</div>
+                </div>
             </div>
             <div class="tab_item">
-                <h2>Борибз Табачников</h2>
-                <p>
-                    Молодая и перспективная web-макака
-                </p>
+                <h1>Борис Табачников</h1>
+                <div class="languages">JavaScript Sass Gulp</div>
+                <div class="persanality-info">frontend-developer</div>
+                <br>
+                <div class="number-admin">8 (985) 992-45-59</div>
+                <br>
+                <div class="email-admin">boristab23@gmail.com</div>
             </div>
         </div>
     </div>
@@ -371,11 +392,11 @@
     <div class="contact">
         <div class="ring">
             <h1>Звоните</h1>
-            <h2>8(800)000-00-00</h2>
+            <h2>8 (977) 521-19-12</h2>
         </div>
         <div class="write">
             <h1>Пишите</h1>
-            <h2>xamlo@xnoobs.ru</h2>
+            <h2>mail@xnoobs.ru</h2>
         </div>
     </div>
     <footer>

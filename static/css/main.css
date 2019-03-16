@@ -39,7 +39,7 @@ body {
 
 header {
     position: fixed;
-    z-index: 10;
+    z-index: 100000;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -121,8 +121,7 @@ header {
     justify-content: flex-end;
 }
 
-.menu,
-.language-change {
+.menu {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -212,42 +211,6 @@ ul {
     display: none;
     -webkit-transition: .2s;
     transition: .2s;
-}
-
-.language-change button {
-    font-family: sans-serif;
-    position: relative;
-    display: inline-block;
-    padding: 3px;
-    cursor: pointer;
-    -webkit-transition: .2s;
-    transition: .2s;
-    text-align: center;
-    vertical-align: middle;
-    text-decoration: none;
-    letter-spacing: 6px;
-    text-transform: uppercase;
-    border: none;
-    background-color: transparent;
-}
-
-.selected-language {
-    font-size: 16px;
-    color: #fcc422;
-}
-
-.unselected-language {
-    font-size: 14px;
-    color: #fff;
-}
-
-.language-change button:hover {
-    font-size: 16px;
-    color: #fcc422;
-}
-
-.language-change button:focus {
-    outline: none;
 }
 
 section {
@@ -357,7 +320,7 @@ section {
 #section-2 .column.active-column .portfolio-bg.portfolio-bg1 {
     -webkit-transition: .5s;
     transition: .5s;
-    background: url(../images/gorod-noch-ogni-zdaniya-svet.jpg) fixed center;
+    background: url(https://glagol38.ru/public/images/upload/image5376308628.jpg) fixed center;
     background-size: cover;
 }
 
@@ -423,11 +386,25 @@ section {
     position: absolute;
     bottom: 10vh;
     left: 50%;
-    width: 200px;
-    margin-left: -100px;
+    width: 500px;
+    margin-left: -250px;
     color: #fcc422;
 }
-
+.qr-code{
+    position: relative;
+    height: 100vh;
+    display: none;
+    background: #fcc422;
+    z-index: 500;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.qr-code img{
+    width: 20vw;
+    height: 20vw;
+    margin-bottom: 10vh;
+}
 .arrow-down {
     position: absolute;
     bottom: 40px;
@@ -770,6 +747,7 @@ section {
     width: 100%;
     text-align: center;
     padding: 10px;
+    cursor: pointer;
 }
 .tab_item_route{
     height: 100%;
@@ -1011,13 +989,12 @@ footer {
     }
     .vertical-menu {
         position: fixed;
-        z-index: 10;
+        z-index: 1000000000;
         display: none;
         width: 100%;
         text-align: center;
     }
-    .vertical-menu button,
-    .language-vertical {
+    .vertical-menu button {
         font-family: sans-serif;
         display: block;
         width: 100%;
@@ -1027,9 +1004,7 @@ footer {
         border: none;
         background-color: rgba(36, 36, 36, .9);
     }
-    .language-vertical button {
-        background-color: transparent;
-    }
+
     .vertical-menu button:hover {
         color: #242424;
         background-color: rgba(252, 196, 34, 1);
@@ -1040,21 +1015,6 @@ footer {
         background-color: rgba(252, 196, 34, 1);
     }
     .section-7, .section-4{
-        display: none;
-    }2
-    .language-vertical {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        padding: 3px;
-        -webkit-box-pack: center;
-        -ms-flex-pack: center;
-        justify-content: center;
-    }
-    .language-vertical a {
-        width: 100%;
-    }
-    .language-change {
         display: none;
     }
     .logo {
@@ -1169,8 +1129,7 @@ footer {
         height: 1000px;
         background: #242424;
     }
-    .vertical-menu button,
-    .language-vertical {
+    .vertical-menu button {
         font-family: sans-serif;
         display: block;
         width: 100%;
@@ -1179,9 +1138,6 @@ footer {
         color: #fff;
         border: none;
         background-color: rgba(36, 36, 36, .9);
-    }
-    .language-vertical button {
-        background-color: transparent;
     }
     .vertical-menu button:hover {
         color: #242424;
@@ -1195,21 +1151,7 @@ footer {
     .section-7, .section-4{
         display: none;
     }
-    .language-vertical {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        padding: 3px;
-        -webkit-box-pack: center;
-        -ms-flex-pack: center;
-        justify-content: center;
-    }
-    .language-vertical a {
-        width: 100%;
-    }
-    .language-change {
-        display: none;
-    }
+
     .logo {
         -webkit-transform: scale(.7);
         transform: scale(.7);
