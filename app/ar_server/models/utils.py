@@ -2,7 +2,7 @@ import json
 from sqlalchemy.ext.declarative import DeclarativeMeta
 
 
-class AlchemyEncoder(json.JSONEncoder):
+class AlchemyModelJsonEncoder(json.JSONEncoder):
 
     def default(self, obj):
         if isinstance(obj.__class__, DeclarativeMeta):

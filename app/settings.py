@@ -17,7 +17,7 @@ class Config(object):
     APP_DIR = path.abspath(path.dirname(__file__))
     PROJECT_ROOT = path.abspath(path.join(APP_DIR, pardir))
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + Path(getcwd() + '/app/data/users.db').as_posix()
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + Path(getcwd() + '/app/data/data.db').as_posix()
     PERMANENT_SESSION_LIFETIME = timedelta(minutes=60)
     TESTING = False
 
@@ -27,7 +27,7 @@ class Config(object):
     MAIL_USE_TLS = False
     MAIL_USE_SSL = True
     MAIL_USERNAME = 'mail@xnoobs.ru'
-    MAIL_PASSWORD = '/dev/null'
+    MAIL_PASSWORD = 'g=&SZy9e\''
 
 
 class ProductionConfig(Config):
