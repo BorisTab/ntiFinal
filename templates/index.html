@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../static/css/main.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="../static/js/main.js"></script>
+
+    <link rel="shortcut icon" href="../static/images/favicon.ico" type="image/x-icon">
+    <title>XNoobs</title>
+</head>
+
+<body>
+<header>
+    <button class="home-button">
+        <svg class="button-svg">
+            <rect class="button-rect"></rect>
+        </svg>
+        xnoobs
+    </button>
+
+    <div class="menu-and-language">
+        <ul class="menu">
+            <li>
+                <a href="#section-2" class="portfolio-button menu-button">Квест</a>
+            </li>
+            <li>
+                <a href="#section-3" class="portfolio-button menu-button">инфраструктура</a>
+            </li>
+            <li>
+                <a href=".section-7" class="portfolio-button menu-button">маршрут</a>
+            </li>
+
+            <li>
+                <a href="#section-5" class="contact-button menu-button">Регистрация</a>
+            </li>
+            <li>
+                <a href=".section-4" class="about-button menu-button">О нас</a>
+            </li>
+        </ul>
+
+        <div class="language-change">
+            <button class="rus selected-language">
+                rus
+            </button>
+            <button onclick="{{ url_for('landing.index_eng') }}" class="eng unselected-language">
+                eng
+            </button>
+        </div>
+    </div>
+
+    <div class="mobile-button" onclick="menu(this); show();">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+    </div>
+</header>
+
+<div class="vertical-menu">
+    <button class="vertical-menu-portfolio">Портфолио</button>
+    <button class="vertical-menu-about">О нас</button>
+    <button class="vertical-menu-contact">Контакты</button>
+    <div class="language-vertical">
+        <button class="vertical-menu-rus" >rus</button>
+        <button class="vertical-menu-eng">eng</button>
+    </div>
+</div>
+
+<section id="section-1">
+    <img src="../static/images/logo.png" alt="" class="logo"/>
+    <p class="slogan">Супер слоган</p>
+    <!--<img src="../static/images/arrow-down.png" alt="" class="arrow-down"/>-->
+    <div class="arrow-down">
+        <div class="indicator">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</section>
+<section id="section-2">
+    <div class="column active-column">
+        <div class="content">
+            <h1>1</h1>
+            <div class="box">
+                <h2>Проект 1</h2>
+                <p>Очень длинное краткое описание проекта. Очень длинное краткое описание проекта.
+                    Очень длинное краткое описание проекта. Очень длинное краткое описание проекта.
+                    Очень длинное краткое описание проекта. Очень длинное краткое описание проекта.</p>
+            </div>
+        </div>
+        <div class="portfolio-bg portfolio-bg1"></div>
+    </div>
+
+    <div class="column">
+        <div class="content">
+            <h1>2</h1>
+            <div class="box">
+                <h2>Проект 2</h2>
+                <p>Очень длинное краткое описание проекта. Очень длинное краткое описание проекта.
+                    Очень длинное краткое описание проекта. Очень длинное краткое описание проекта.
+                    Очень длинное краткое описание проекта. Очень длинное краткое описание проекта.</p>
+            </div>
+        </div>
+        <div class="portfolio-bg portfolio-bg2"></div>
+    </div>
+
+    <div class="column">
+        <div class="content">
+            <h1>3</h1>
+            <div class="box">
+                <h2>Проект 3</h2>
+                <p>Очень длинное краткое описание проекта. Очень длинное краткое описание проекта.
+                    Очень длинное краткое описание проекта. Очень длинное краткое описание проекта.
+                    Очень длинное краткое описание проекта. Очень длинное краткое описание проекта.</p>
+            </div>
+        </div>
+        <div class="portfolio-bg portfolio-bg3"></div>
+    </div>
+
+    <div class="column">
+        <div class="content">
+            <h1>4</h1>
+            <div class="box">
+                <h2>Проект 4</h2>
+                <p>Очень длинное краткое описание проекта. Очень длинное краткое описание проекта.
+                    Очень длинное краткое описание проекта. Очень длинное краткое описание проекта.
+                    Очень длинное краткое описание проекта. Очень длинное краткое описание проекта.</p>
+            </div>
+        </div>
+        <div class="portfolio-bg portfolio-bg4"></div>
+    </div>
+    <!--<div class="title">-->
+    <!--<h1>Наши достижения</h1>-->
+    <!--<div class="underline"></div>-->
+    <!--<h2>Еще какой-то текст</h2>-->
+    <!--</div>-->
+
+    <div class="portfolio">
+        <div class="portfolio-title">
+            <img class="visualisation-1" src="../static/images/gorod-noch-ogni-zdaniya-svet.jpg" alt="">
+            <div class="text-discription">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus dolore error eveniet impedit nobis numquam omnis optio saepe, tempora vel?</p>
+            </div>
+        </div>
+        <div class="portfolio-title">
+            <img class="visualisation-2" src="../static/images/gorod2.jpg" alt="">
+            <div class="text-discription">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus dolore error eveniet impedit nobis numquam omnis optio saepe, tempora vel?</p>
+            </div>
+        </div>
+        <div class="portfolio-title">
+            <img class="visualisation-1" src="../static/images/gorod3.jpg" alt="">
+            <div class="text-discription">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus dolore error eveniet impedit nobis numquam omnis optio saepe, tempora vel?</p>
+            </div>
+        </div>
+        <div class="portfolio-title">
+            <img class="visualisation-2" src="../static/images/gorod4.jpg" alt="">
+            <div class="text-discription">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus dolore error eveniet impedit nobis numquam omnis optio saepe, tempora vel?</p>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="section-3">
+    <div class="title title-2">
+        <h1>Кто мы такие?</h1>
+        <div></div>
+        <h2>Еще какой-то текст</h2>
+    </div>
+</section>
+<div class="section-7"></div>
+<section id="section-7">
+    <div class="wrapper_route">
+        <div class="tabs_route">
+            <div class="tab_route">3 команды</div>
+            <div class="tab_route">4 команды</div>
+            <div class="tab_route">5 команд</div>
+            <div class="tab_route">6 команд</div>
+            <div class="tab_route">7 команд</div>
+        </div>
+        <div class="tab_content_route">
+            <div class="tab_item_route">
+                <img src="https://github.com/timakon/Js_Menu/blob/master/images/cat1.jpg?raw=true" alt="">
+                <img src="https://github.com/timakon/Js_Menu/blob/master/images/cat2.jpg?raw=true" alt="">
+                <img src="https://github.com/timakon/Js_Menu/blob/master/images/cat3.jpg?raw=true" alt="">
+            </div>
+            <div class="tab_item_route">
+                <img src="https://github.com/timakon/Js_Menu/blob/master/images/cat1.jpg?raw=true" alt="">
+                <img src="https://github.com/timakon/Js_Menu/blob/master/images/cat2.jpg?raw=true" alt="">
+                <img src="https://github.com/timakon/Js_Menu/blob/master/images/cat3.jpg?raw=true" alt="">
+                <img src="https://github.com/timakon/Js_Menu/blob/master/images/cat1.jpg?raw=true" alt="">
+            </div>
+            <div class="tab_item_route">
+                <img src="https://github.com/timakon/Js_Menu/blob/master/images/cat1.jpg?raw=true" alt="">
+                <img src="https://github.com/timakon/Js_Menu/blob/master/images/cat1.jpg?raw=true" alt="">
+                <img src="https://github.com/timakon/Js_Menu/blob/master/images/cat1.jpg?raw=true" alt="">
+                <img src="https://github.com/timakon/Js_Menu/blob/master/images/cat1.jpg?raw=true" alt="">
+                <img src="https://github.com/timakon/Js_Menu/blob/master/images/cat1.jpg?raw=true" alt="">
+            </div>
+            <div class="tab_item_route">
+                <img src="https://github.com/timakon/Js_Menu/blob/master/images/cat1.jpg?raw=true" alt="">
+                <img src="https://github.com/timakon/Js_Menu/blob/master/images/cat1.jpg?raw=true" alt="">
+                <img src="https://github.com/timakon/Js_Menu/blob/master/images/cat1.jpg?raw=true" alt="">
+                <img src="https://github.com/timakon/Js_Menu/blob/master/images/cat1.jpg?raw=true" alt="">
+                <img src="https://github.com/timakon/Js_Menu/blob/master/images/cat1.jpg?raw=true" alt="">
+                <img src="https://github.com/timakon/Js_Menu/blob/master/images/cat1.jpg?raw=true" alt="">
+            </div>
+            <div class="tab_item_route">
+                <img src="https://github.com/timakon/Js_Menu/blob/master/images/cat1.jpg?raw=true" alt="">
+                <img src="https://github.com/timakon/Js_Menu/blob/master/images/cat1.jpg?raw=true" alt="">
+                <img src="https://github.com/timakon/Js_Menu/blob/master/images/cat1.jpg?raw=true" alt="">
+                <img src="https://github.com/timakon/Js_Menu/blob/master/images/cat1.jpg?raw=true" alt="">
+                <img src="https://github.com/timakon/Js_Menu/blob/master/images/cat1.jpg?raw=true" alt="">
+                <img src="https://github.com/timakon/Js_Menu/blob/master/images/cat1.jpg?raw=true" alt="">
+                <img src="https://github.com/timakon/Js_Menu/blob/master/images/cat1.jpg?raw=true" alt="">
+            </div>
+        </div>
+    </div>
+</section>
+<section id="section-5">
+    <div class="title">
+        <h1>Хотите связаться с нами?</h1>
+        <div></div>
+        <h2>Напишите нам</h2>
+    </div>
+
+    <div class="forms">
+        <form class="form" method="post">
+            <div class="form-group">
+                <input type="text" placeholder=" " class="form-input" name="name" id="name" required>
+                <label for="name" class="form-label">Имя</label>
+            </div>
+            <div class="form-group">
+                <input name="email" type="email" placeholder=" " class="form-input" id="email" required>
+                <label for="email" class="form-label">E-Mail</label>
+            </div>
+            <input type="hidden" class="data-input">
+            <button class="form-button">Отправить</button>
+        </form>
+    </div>
+</section>
+<div class="section-4"></div>
+<section id="section-4">
+    <div class="split">
+        <div class="screen">
+            <div class="card">
+                <div class="img-box"><img src="../static/images/MK.jpg" alt=""></div>
+                <h2>Максим Коклюшкин</h2>
+            </div>
+            <div class="person-info">
+                <div class="img-box"><img src="../static/images/MK.jpg" alt=""></div>
+                <h2>Максим Коклюшкин</h2>
+                <p>
+                    Python.<br>
+                    Может ушатать вас стулом.
+                </p>
+            </div>
+        </div>
+
+        <div class="screen">
+            <div class="card">
+                <div class="img-box"><img src="../static/images/MS.jpg" alt=""></div>
+                <h2>Матам Скуфукс</h2>
+            </div>
+            <div class="person-info">
+                <div class="img-box"><img src="../static/images/MS.jpg" alt=""></div>
+                <h2>Матам Скуфукс</h2>
+                <p>
+                    Python, C#.<br>
+                    Тупа машина.
+                </p>
+            </div>
+        </div>
+
+
+        <div class="screen">
+            <div class="card">
+                <div class="img-box"><img src="../static/images/DI.jpg" alt=""></div>
+                <h2>Димитрий Иванцов</h2>
+            </div>
+            <div class="person-info">
+                <div class="img-box"><img src="../static/images/DI.jpg" alt=""></div>
+                <h2>Димитрий Иванцов</h2>
+                <p>
+                    Дима, спасибо, что ты есть.
+                </p>
+            </div>
+        </div>
+
+
+        <div class="screen">
+            <div class="card">
+                <div class="img-box"><img src="../static/images/TK.jpg" alt=""></div>
+                <h2>Тимофей Конюх</h2>
+            </div>
+            <div class="person-info">
+                <div class="img-box"><img src="../static/images/TK.jpg" alt=""></div>
+                <h2>Тимофей Конюх</h2>
+                <p>
+                    Старая web-макака
+                </p>
+            </div>
+        </div>
+
+
+        <div class="screen">
+            <div class="card">
+                <div class="img-box"><img src="../static/images/BT.jpg" alt=""></div>
+                <h2>Борибз Табачников</h2>
+            </div>
+            <div class="person-info">
+                <div class="img-box"><img src="../static/images/BT.jpg" alt=""></div>
+                <h2>Борибз Табачников</h2>
+                <p>
+                    Молодая и перспективная web-макака
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="wrapper-admin">
+        <div class="tabs">
+            <div class="tab"><img src="../static/images/MK.jpg" alt=""></div>
+            <div class="tab"><img src="../static/images/MS.jpg" alt=""></div>
+            <div class="tab"><img src="../static/images/DI.jpg" alt=""></div>
+            <div class="tab"><img src="../static/images/TK.jpg" alt=""></div>
+            <div class="tab"><img src="../static/images/BT.jpg" alt=""></div>
+        </div>
+        <div class="tab_content">
+            <div class="tab_item">
+                <h2>Максим Коклюшкин</h2>
+                <p>
+                    Python.<br>
+                    Может ушатать вас стулом.
+                </p>
+            </div>
+            <div class="tab_item">
+                <h2>Матам Скуфукс</h2>
+                <p>
+                    Python, C#.<br>
+                    Тупа машина.
+                </p>
+            </div>
+            <div class="tab_item">
+                <h2>Димитрий Иванцов</h2>
+                <p>
+                    Дима, спасибо, что ты есть.
+                </p>
+            </div>
+            <div class="tab_item">
+                <h2>Тимофей Конюх</h2>
+                <p>
+                    Старая web-макака
+                </p>
+            </div>
+            <div class="tab_item">
+                <h2>Борибз Табачников</h2>
+                <p>
+                    Молодая и перспективная web-макака
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="section-6">
+    <div class="contact">
+        <div class="ring">
+            <h1>Звоните</h1>
+            <h2>8(800)000-00-00</h2>
+        </div>
+        <div class="write">
+            <h1>Пишите</h1>
+            <h2>xamlo@xnoobs.ru</h2>
+        </div>
+    </div>
+    <footer>
+        Copyright © 2019 XNoobs. Все права защищены.
+    </footer>
+</section>
+</body>
+</html>
