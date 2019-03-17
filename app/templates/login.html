@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="../static/css/login_form.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="../static/js/login_form.js"></script>
+    <title>Document</title>
+</head>
+<body>
+<script>
+    $.ajax({
+        type: "POST",
+        url: '/ar/login',
+        data: data
+    })
+    .done(function (data) {
+        if (data.error) {
+            alert('GAVNO')
+        }
+    });
+
+    event.preventDefault();
+</script>
+    <div class="forms" id="particles-js">
+        <form action="{{ url_for('ar.login') }}" name="form_login" class="form login" method="post">
+            <h1 class="form-title">Вход</h1>
+            <h4></h4>
+            <div class="form-group">
+                {{ form.email(class_='form-input', placeholder=" ", id="login-login", type="email") }}
+                <label class="form-label" >email</label>
+            </div>
+            <div class="form-group">
+                {{ form.password(class_='form-input', placeholder=" ", id="login-password", type="password") }}
+                <label class="form-label" > Password </label>
+            </div>
+            <div class="buttons">
+                <button class="switch-button secondary login" onclick="location.replace('{{ url_for('ar.register') }}');">Регистрация</button>
+                {{ form.button(class_='login-button') }}
+            </div>
+        </form>
+    </div>
+    <script src="../static/js/particles.js"></script>
+    <script src="../static/js/app.js"></script>
+</body>
+</html>

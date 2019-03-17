@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0">
+    <title>AR</title>
+
+    <link rel="stylesheet" href="../static/css/AddAR.css">
+    <link rel="stylesheet" href="../static/css/ar.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.min.js"></script>
+    <script src="../static/js/ar.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCaIGVam3ZbXbjokw5Q1Hmf2wx-0VJ3R_Q&callback=initMap"
+            async defer></script>
+</head>
+<body>
+<div id="map">
+
+</div>
+
+<div class="menu-mobile">
+    <div class="bar1"></div>
+    <div class="bar2"></div>
+    <div class="bar3"></div>
+</div>
+
+<section class="add3D" id="addAR">
+    <div class="menu-button-close">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+    </div>
+    <div class="main active menu">
+        <div class="bl">
+            <a href="#openModal_1">
+                <div class="image">
+                    <img src="https://github.com/timakon/Js_Menu/blob/master/images/cat1.jpg?raw=true">
+                </div>
+            </a>
+            <div class="text">
+                <p class="description">Описание к этой модели</p>
+                <input class="button_3D" type="submit" value="Загрузить">
+            </div>
+
+        </div>
+
+
+        <a href="#openModal_2" class="bl">
+            <div class="image">
+                <img src="https://github.com/timakon/Js_Menu/blob/master/images/cat2.jpg?raw=true">
+            </div>
+        </a>
+        <a href="#openModal_3" class="bl">
+            <div class="image">
+                <img src="https://github.com/timakon/Js_Menu/blob/master/images/cat3.jpg?raw=true">
+            </div>
+        </a>
+        <a href="#openModal_4" class="bl">
+            <div class="image">
+                <img src="https://github.com/timakon/Js_Menu/blob/master/images/cat4.jpg?raw=true">
+            </div>
+        </a>
+        <a href="#openModal_5" class="bl">
+            <div class="image">
+                <img src="https://github.com/timakon/Js_Menu/blob/master/images/cat5.jpg?raw=true">
+            </div>
+        </a>
+        <a href="#openModal_6" class="bl">
+            <div class="image">
+                <img src="https://github.com/timakon/Js_Menu/blob/master/images/cat6.jpg?raw=true">
+            </div>
+        </a>
+    </div>
+
+
+    <div id="openModal_1" class="modalDialog">
+        <div>
+            <a href="#close" class="close">X</a>
+            <iframe class="ar_3d" src="https://sketchfab.com/models/4fe3736f06144b428da0a9f7387bf9c0/embed?autostart=1" frameborder="0" allow="autoplay; fullscreen; vr" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+        </div>
+    </div>
+</section>
+
+
+<div class="form">
+    <div class="menu-button-open">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+    </div>
+    <div class="map-button"><p>Карта</p></div>
+    <div class="exit-button" onclick="window.location.href='{{ url_for('ar.logout') }}'"><p>Выход</p></div>
+
+    <h1 class="choose-zone-title">Выберите зону <br> или введите координаты</h1>
+    <form class="coordinate-send" name="send-coordinate" method="post">
+        {{ form.right_up_lat(type='hidden') }}
+        {{ form.right_up_lng(type='hidden') }}
+        {{ form.left_bottom_lat(type='hidden') }}
+        {{ form.left_bottom_lng(type='hidden') }}
+        <p>Координаты правого верхнего угла</p>
+        <input type="text" name="right_up" id="rightUp" class="rightUp" placeholder="широта;долгота">
+        <p>Координаты левого нижнего угла</p>
+        <input type="text" name="left_bottom" id="leftBottom" placeholder="широта;долгота">
+
+        <p>Введите имя</p>
+        {{ form.map_name }}
+        {{ form.form_button() }}
+    </form>
+    <br>
+    <p>Модели</p>
+    <div class="history-block">
+        {% if models or '' %}
+            {% for model in models %}
+                <div class="history-cell" id="" data-cell-id="">
+                    <img id="cell-photo" src="data:image/png;base64,{{ model.thumbnail | b64d }}" alt="preview"/>
+                    <p id="name-of-cell">
+                        {{ model.name }}
+                    </p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p style="color:red;">Nothing here</p>
+        {% endif %}
+    </div>
+</div>
+
+<div class="hide-button">
+    <div class="arrow-block">
+        <div class="bar1"></div>
+        <div class="bar3"></div>
+    </div>
+</div>
+</body>
+</html>

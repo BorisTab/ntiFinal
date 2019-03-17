@@ -1,0 +1,261 @@
+[{
+  "width": 25,
+  "height": 34,
+  "points": [
+  {
+    "Bibikov house": {
+      "x":1,
+      "y":6,
+      "coords": {
+        "latitude": 52.284256,
+        "longitude": 104.278289
+      }
+    },
+    "Mikheev house":{
+      "x":12,
+      "y":15,
+      "coords":{
+        "latitude":52.288394,
+        "longitude": 104.286758
+       }
+    },
+    "Bogdanov house":{
+      "x":14,
+      "y":3,
+      "coords":{
+        "latitude":52.282712,
+        "longitude": 104.288311
+       }
+      },
+    "Verjba house":{
+      "x":29,
+      "y":6,
+      "coords":{
+        "latitude":52.284197,
+        "longitude":104.301008
+       }
+      },
+    "Sokolovsky-Krenyc":{
+      "x":20,
+      "y":11,
+      "coords":{
+        "latitude":52.286541,
+        "longitude":104.293793
+       }
+      },
+    "Vinokurov house":{
+      "x":30,
+      "y":11,
+      "coords":{
+        "latitude":52.286781,
+        "longitude":104.301455
+       }
+      },
+    "Ventovkin house":{
+      "x":23,
+      "y":13,
+      "coords":{
+        "latitude":52.287986,
+        "longitude":104.295976
+       }
+      },
+    "Kolashikov-Krylov house":{
+      "x":17,
+      "y":15,
+      "coords":{
+        "latitude":52.288730,
+        "longitude":104.291231
+       }
+      },
+    "Kazarinov house":{
+      "x":17,
+      "y":20,
+      "coords":{
+        "latitude":52.290709,
+        "longitude":104.290771
+       }
+      },
+    "Reichbaum house":{
+      "x":23,
+      "y":28,
+      "coords":{
+        "latitude":52.289839,
+        "longitude":104.295127
+       }
+      }
+    }
+]
+},
+{
+  "width":9,
+  "height": 7,
+  "points": {
+    "Bibikov house":{
+      "x":0,
+      "y":1,
+      "coords":{
+        "latitude":52.284256,
+        "longitude":104.278289
+       }
+   },
+    "Mikheev house":{
+      "x":3,
+      "y":4,
+      "coords":{
+        "latitude":52.288394,
+        "longitude":104.286758
+       }
+      },
+    "Bogdanov house":{
+      "x":3,
+      "y":1,
+      "coords":{
+        "latitude":52.282712,
+        "longitude":104.288311
+       }
+      },
+    "Verjba house":{
+      "x":8,
+      "y":1,
+      "coords":{
+        "latitude":52.284197,
+        "longitude":104.301008
+       }
+      },
+    "Sokolovsky-Krenyc":{
+      "x":5,
+      "y":3,
+      "coords":{
+        "latitude":52.286541,
+        "longitude":104.293793
+       }
+      },
+    "Vinokurov house":{
+      "x":8,
+      "y":3,
+      "coords":{
+        "latitude":52.286781,
+        "longitude":104.301455
+       }
+      },
+    "Ventovkin house":{
+      "x":6,
+      "y":4,
+      "coords":{
+        "latitude":52.287986,
+        "longitude":104.295976
+       }
+      },
+    "Kolashikov-Krylov house":{
+      "x":4,
+      "y":4,
+      "coords":{
+        "latitude":52.288730,
+        "longitude":104.291231
+       }
+      },
+    "Kazarinov house":{
+      "x":4,
+      "y":5,
+      "coords":{
+        "latitude":52.290709,
+        "longitude":104.290771
+       }
+      },
+    "Reichbaum house":{
+      "x":6,
+      "y":5,
+      "coords":{
+        "latitude":52.289839,
+        "longitude":104.295127
+       }
+    }
+  }
+},
+{
+  "width": 7,
+  "height": 5,
+  "points": {
+    "Bibikov house":{
+      "x":0,
+      "y":1,
+      "coords":{
+        "latitude":52.284256,
+        "longitude":104.278289
+       }
+      },
+    "Mikheev house":{
+      "x":2,
+      "y":3,
+      "coords":{
+        "latitude":52.288394,
+        "longitude":104.286758
+       }
+      },
+    "Bogdanov house":{
+      "x":2,
+      "y":0,
+      "coords":{
+        "latitude":52.282712,
+        "longitude":104.288311
+       }
+      },
+    "Verjba house":{
+      "x":5,
+      "y":1,
+      "coords":{
+        "latitude":52.284197,
+        "longitude":104.301008
+       }
+      },
+    "Sokolovsky-Krenyc":{
+      "x":4,
+      "y":2,
+      "coords":{
+        "latitude":52.286541,
+        "longitude":104.293793
+       }
+      },
+    "Vinokurov house":{
+      "x":6,
+      "y":2,
+      "coords":{
+        "latitude":52.286781,
+        "longitude":104.301455
+       }
+      },
+    "Ventovkin house":{
+      "x":3,
+      "y":3,
+      "coords":{
+        "latitude":52.287986,
+        "longitude":104.295976
+       }
+      },
+    "Kolashikov-Krylov house":{
+      "x":3,
+      "y":4,
+      "coords":{
+        "latitude":52.288730,
+        "longitude":104.291231
+       }
+      },
+    "Kazarinov house":{
+      "x":4,
+      "y":3,
+      "coords":{
+        "latitude":52.290709,
+        "longitude":104.290771
+       }
+      },
+    "Reichbaum house":{
+      "x":23,
+      "y":28,
+      "coords":{
+        "latitude":52.289839,
+        "longitude":104.295127
+       }
+      }
+    }
+  }
+]
