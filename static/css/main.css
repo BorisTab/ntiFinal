@@ -327,21 +327,21 @@ section {
 #section-2 .column.active-column .portfolio-bg.portfolio-bg2 {
     -webkit-transition: .5s;
     transition: .5s;
-    background: url(../images/gorod2.jpg) fixed center;
+    background: url(https://bitnovosti.com/wp-content/uploads/2018/03/image1513664728666.jpg) fixed center;
     background-size: cover;
 }
 
 #section-2 .column.active-column .portfolio-bg.portfolio-bg3 {
     -webkit-transition: .5s;
     transition: .5s;
-    background: url(../images/gorod3.jpg) fixed center;
+    background: url(https://express-china.ru/upload/iblock/3e3/irkutsk.jpg) fixed center;
     background-size: cover;
 }
 
 #section-2 .column.active-column .portfolio-bg.portfolio-bg4 {
     -webkit-transition: .5s;
     transition: .5s;
-    background: url(../images/gorod4.jpg) fixed center;
+    background: url(https://biletix.ru/blog/wp-content/uploads/2018/10/Baikal.width-1920.jpg) fixed center;
     background-size: cover;
 }
 
@@ -486,46 +486,48 @@ section {
         /*opacity: 0.4;*/
     }
 }
-
-.title {
-    position: absolute;
+.wrapper_inf {
     display: block;
+}
+.wrapper_inf .active {
+    background: #fcc422;
+}
+.tabs_inf {
+    display: flex;
+    justify-content: space-around;
+    background: #eeecec;
+}
+.tab_inf{
     width: 100%;
-    margin: 0 auto;
+    text-align: center;
+    padding: 10px;
+    cursor: pointer;
+}
+.tab_item_inf{
+    height: 100%;
+    display: flex;
+    flex-flow:row wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+.tab_item_inf img{
+    height: 80vh;
+    margin-bottom: 100px;
+}
+.usad{
+    color: #fcc422;
+    font-size: 18px;
     text-align: center;
 }
 
-.title h1 {
-    font-family: sans-serif;
-    font-size: 50px;
-    margin-top: 80px;
-    margin-bottom: 0;
-    color: #242424;
-}
-
-.title div {
-    width: 500px;
-    height: 6px;
-    margin: 0 auto;
-    border-radius: 3px;
-    background-color: #fcc422;
-}
-
-.title h2 {
-    color: #565656;
-}
-
-.title-2 h1 {
+.title p{
+    margin-bottom: 20px;
+    font-size: 30px;
     color: #fcc422;
+    text-align: center;
 }
 
-.title-2 div {
-    background-color: #565656;
-}
 
-.title-2 h2 {
-    color: #fff;
-}
 
 .portfolio {
     display: none;
@@ -731,6 +733,11 @@ section {
 
 
 /*}*/
+center{
+    margin-bottom: 20px;
+    font-size: 30px;
+    color: #fcc422;
+}
 
 .wrapper_route {
     display: block;
@@ -758,8 +765,49 @@ section {
 }
 .tab_item_route img{
     width: 350px;
+    height: 220px;
     margin: 10px;
 }
+.title {
+    position: absolute;
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.title h1 {
+    font-family: sans-serif;
+    font-size: 50px;
+    margin-top: 80px;
+    margin-bottom: 0;
+    color: #242424;
+}
+
+.title div {
+    width: 500px;
+    height: 6px;
+    margin: 0 auto;
+    border-radius: 3px;
+    background-color: #fcc422;
+}
+
+.title h2 {
+    color: #565656;
+}
+
+.title-2 h1 {
+    color: #fcc422;
+}
+
+.title-2 div {
+    background-color: #565656;
+}
+
+.title-2 h2 {
+    color: #fff;
+}
+
 .split {
     position: relative;
     height: 100vh;
@@ -1021,9 +1069,6 @@ footer {
         -webkit-transform: scale(.7);
         transform: scale(.7);
     }
-    .title div {
-        width: 95%;
-    }
     #section-5 {
         height: 800px;
     }
@@ -1047,6 +1092,10 @@ footer {
     #section-2 {
         height: 1000px;
         background: #242424;
+    }
+    #section-4 {
+        background-color: #fcc422;
+        height: 500px;
     }
     .portfolio-title {
         height: 60vh;
@@ -1086,12 +1135,12 @@ footer {
         height: 100%;
     }
     .wrapper-admin .active {
-        background: #fff;
+        background: #fcc422;
     }
     .tabs {
         display: flex;
         justify-content: space-around;
-        background: #eeecec;
+        background: #242424;
     }
     .tab {
         width: 100%;
@@ -1106,7 +1155,10 @@ footer {
         width: 100%;
     }
     .tab_content {
-        background: #fff;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 }
 
@@ -1151,6 +1203,10 @@ footer {
     .section-7, .section-4{
         display: none;
     }
+    #section-4 {
+        background-color: #fcc422;
+        height: 500px;
+    }
 
     .logo {
         -webkit-transform: scale(.7);
@@ -1163,7 +1219,7 @@ footer {
         height: 800px;
     }
     #section-7{
-        height: 716px;
+        height: 820px;
     }
     .portfolio {
         font-family: sans-serif;
@@ -1183,7 +1239,7 @@ footer {
         align-items: center;
     }
     .portfolio-title {
-        height: 80vh;
+        height: 100vh;
         width: 96%;
         background: #eeecec;
         border: 1px solid black;
@@ -1212,12 +1268,12 @@ footer {
         height: 100%;
     }
     .wrapper-admin .active {
-        background: #fff;
+        background: #fcc422;
     }
     .tabs {
         display: flex;
         justify-content: space-around;
-        background: #eeecec;
+        background: #242424;
     }
     .tab {
         width: 100%;
@@ -1231,6 +1287,9 @@ footer {
         width: 100%;
     }
     .tab_content {
-        background: #fff;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 }

@@ -30,7 +30,7 @@ window.onresize = portfolioChange;
 function graphsChange() {
     // if($('.tab_content_route').width() < 993) {
     let graphsHeight = $('.tab_content_route').height();
-    $('#section-7').css('height', +(graphsHeight +50));
+    $('#section-7').css('height', +(graphsHeight +150));
     // }
 }
 window.onresize = graphsChange();
@@ -40,6 +40,13 @@ function changeAdminInfo(){
     $(".wrapper-admin .tab").click(function() {
         $(".wrapper-admin .tab").removeClass("active").eq($(this).index()).addClass("active");
         $(".tab_item").hide().eq($(this).index()).fadeIn()
+    }).eq(0).addClass("active");
+}
+function changeInf(){
+    $(".tab_item_inf").not(":first").hide();
+    $(".wrapper_inf .tab_inf").click(function() {
+        $(".wrapper_inf .tab_inf").removeClass("active").eq($(this).index()).addClass("active");
+        $(".tab_item_inf").hide().eq($(this).index()).fadeIn()
     }).eq(0).addClass("active");
 }
 
@@ -55,7 +62,8 @@ function changeGraphsInfo(){
 $('document').ready(function () {
 
     changeGraphsInfo();
-    changeAdminInfo()
+    changeInf();
+    changeAdminInfo();
     portfolioChange();
 
     function smallMenu() {
