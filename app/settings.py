@@ -24,10 +24,12 @@ class Config(object):
     # SMTP server config
     MAIL_SERVER = 'smtp.gmail.com'
     MAIL_PORT = 465
+    DOMAIN = 'gmail.com'
+    AUTHENTICATION = True
     MAIL_USE_TLS = False
     MAIL_USE_SSL = True
-    MAIL_USERNAME = 'mail@xnoobs.ru'
-    MAIL_PASSWORD = 'g=&SZy9e\''
+    MAIL_USERNAME = 'mail@xnoobs.ru'  # 'admin@xnoobs.ru'
+    MAIL_PASSWORD = 'aVKV7W=q'  # '/dev/null'
 
 
 class ProductionConfig(Config):

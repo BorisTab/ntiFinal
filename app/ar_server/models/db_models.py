@@ -5,8 +5,9 @@ from app.extensions import db
 class Team(db.Model):
     __tablename__ = 'teams'
 
+    id = db.Column(db.Integer, autoincrement=True)
     name = db.Column(db.String, unique=True)
-    dateStart = db.Column(db.String)
+    # dateStart = db.Column(db.String)
     email = db.Column(db.String, unique=True, primary_key=True)
     code = db.Column(db.String)
 

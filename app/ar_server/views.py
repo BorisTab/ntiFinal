@@ -34,13 +34,13 @@ logger.setLevel(logging.ERROR)
 logger.addHandler(handler)
 
 # Create blueprint for /ar views
-blueprint = Blueprint('ar', 'ar')
+blueprint = Blueprint('ar', 'ar', static_folder='../static')
 
 
-@blueprint.route('/user/update/map')
+@blueprint.route('/user/update/map', methods=['GET', "POST"])
 def update_map():
     """ update map """
-    return render_template()
+    return render_template('map.html')
 
 
 @blueprint.route('/user/update/position', methods=['POST'])
@@ -74,15 +74,16 @@ def set_team_code():
 def set_user_id():
     """ register new user when android app launched first time """
 
-    db.session.add(User())
+    new_user = User()
+    db.session.add(new_user)
     db.session.commit()
-    return '200'
+    return jsonify({'id': new_user.id})
 
 
 @blueprint.route('/team/get/amount', methods=['POST'])
 def get_team_count():
     """ returns amount of teams """
-    return jsonify({'amount': db.session.query(Team).all()})
+    return jsonify({'amount': len(db.session.query(Team).all())})
 
 
 @blueprint.after_request
